@@ -1,0 +1,39 @@
+.bg-blue {
+  background-color: #1890ff !important;
+}
+
+.text-blue {
+  color: #1890ff !important;
+}
+
+.bg-black {
+  background-color: #000 !important;
+}
+
+.text-black {
+  color: #000 !important;
+}
+
+.bg-white {
+  background-color: #fff !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.bg-deepgray {
+  background-color: #545c64 !important;
+}
+
+.text-deepgray {
+  color: #545c64 !important;
+}
+
+.bg-lightgreen {
+  background-color: lightgreen !important;
+}
+
+.text-lightgreen {
+  color: lightgreen !important;
+}
