@@ -1,0 +1,41 @@
+<template>
+  <div>
+    <el-icon class="cursor-pointer" v-if="isMenuCollapse" @click="changeCollapseStatus(false)">
+      <expand />
+    </el-icon>
+    <el-icon class="cursor-pointer" v-else @click="changeCollapseStatus(true)">
+      <fold />
+    </el-icon>
+  </div>
+</template>
+
+<script>
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
+import { Expand, Fold } from '@element-plus/icons'
+
+export default defineComponent({
+  components: {
+    Expand,
+    Fold
+  },
+  setup() {
+    let store = useStore()
+    const isMenuCollapse = computed(() => {
+      return store.state.isMenuCollapse
+    })
+    console.log(isMenuCollapse)
+    const changeCollapseStatus = (val) => {
+      store.dispatch('changeMenuCollapse', val)
+    }
+    return {
+      changeCollapseStatus,
+      isMenuCollapse
+    }
+  },
+})
+</script>
+
+<style lang="scss" scoped>
+
+</style>
