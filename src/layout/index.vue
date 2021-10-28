@@ -1,6 +1,8 @@
 <template>
   <el-container class="layout h-full w-full" v-if="sidebarPosition === 'left'">
-    <Sidebar />
+    <el-aside :width="sidebarWidth">
+      <Sidebar />
+    </el-aside>
     <el-container>
       <el-header class="p-0">
         <Header />
@@ -47,8 +49,12 @@ export default defineComponent({
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
+    const sidebarWidth = computed(() => {
+      return store.state.isMenuCollapse ? '64px' : '200px'
+    })
     return {
-      sidebarPosition
+      sidebarPosition,
+      sidebarWidth
     }
   },
 })

@@ -1,64 +1,79 @@
 <template>
-
-  <!-- <el-aside> -->
-    <el-menu class="h-full side-menu" router :collapse="isMenuCollapse" :mode="menuMode">
-      <el-sub-menu index="1">
-        <template #title
-          ><i class="el-icon-message"></i>
-          <span>导航一</span></template
-        >
-        <el-menu-item-group>
-          <el-menu-item index="/table">table</el-menu-item>
-          <el-menu-item index="/helloworld">helloworld</el-menu-item>
-        </el-menu-item-group>
-      </el-sub-menu>
-      <el-sub-menu index="2">
-        <template #title>
-          <i class="el-icon-menu"></i>
-          <span>导航二</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>Group 1</template>
-          <el-menu-item index="2-1">Option 1</el-menu-item>
-          <el-menu-item index="2-2">Option 2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group 2">
-          <el-menu-item index="2-3">Option 3</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="2-4">
-          <template #title>Option 4</template>
-          <el-menu-item index="2-4-1">Option 4-1</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-sub-menu index="3">
-        <template #title>
-          <i class="el-icon-setting"></i>
-          <span>导航三</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>Group 1</template>
-          <el-menu-item index="3-1">Option 1</el-menu-item>
-          <el-menu-item index="3-2">Option 2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group 2">
-          <el-menu-item index="3-3">Option 3</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="3-4">
-          <template #title>Option 4</template>
-          <el-menu-item index="3-4-1">Option 4-1</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-    </el-menu>
-  <!-- </el-aside> -->
+  <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode">
+    <sidebar-item
+      v-for="item in menuList"
+      :key="item.id"
+      :item="item"
+    ></sidebar-item>
+  </el-menu>
 </template>
 
 <script>
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, toRefs, reactive } from 'vue'
 import { useStore } from 'vuex'
+import SidebarItem from './components/SidebarItem.vue'
 
 export default defineComponent({
+  components: {
+    SidebarItem
+  },
   setup() {
     let menuMode = ref('vertical')
+    const data = reactive({
+      menuList: [
+        {
+          name: '首页',
+          id: '1',
+          icon: 'el-icon-house',
+          path: '/home',
+          children: []
+        },
+        {
+          name: '导航一',
+          id: '2',
+          icon: 'el-icon-apple',
+          path: '/tool',
+          children: [
+            {
+              name: '导航一-1',
+              id: '2-1',
+              icon: 'el-icon-baseball',
+              path: '/tool/page1',
+              children: []
+            },
+            {
+              name: '导航一-2',
+              id: '2-2',
+              icon: 'el-icon-basketball',
+              path: '/tool/page2',
+              children: []
+            }
+          ]
+        },
+        {
+          name: '导航三',
+          id: '3',
+          icon: 'el-icon-food',
+          path: '/food',
+          children: [
+            {
+              name: '导航三-1',
+              id: '3-1',
+              icon: 'el-icon-cherry',
+              path: '/food/fries',
+              children: []
+            },
+            {
+              name: '导航三-2',
+              id: '3-2',
+              icon: 'el-icon-coffee',
+              path: '/food/coffee',
+              children: []
+            }
+          ]
+        }
+      ]
+    })
     let store = useStore()
     const isMenuCollapse = computed(() => {
       return store.state.isMenuCollapse
@@ -70,7 +85,9 @@ export default defineComponent({
     if (sidebarPosition.value === 'top') {
       menuMode = 'horizontal'
     }
+    const params = toRefs(data)
     return {
+      ...params,
       menuMode,
       isMenuCollapse
     }
@@ -82,4 +99,7 @@ export default defineComponent({
 // .side-menu:not(.el-menu--collapse) {
 //   width: 200px;
 // }
+.no-transition {
+  transition: none;
+}
 </style>
