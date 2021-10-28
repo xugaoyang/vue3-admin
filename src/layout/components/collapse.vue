@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <el-icon class="cursor-pointer" v-if="isMenuCollapse" @click="changeCollapseStatus(false)">
+  <div class="p-5">
+    <el-icon class="cursor-pointer text-18px" v-if="isMenuCollapse" @click="changeCollapseStatus(false)">
       <expand />
     </el-icon>
-    <el-icon class="cursor-pointer" v-else @click="changeCollapseStatus(true)">
+    <el-icon class="cursor-pointer text-18px" v-else @click="changeCollapseStatus(true)">
       <fold />
     </el-icon>
   </div>

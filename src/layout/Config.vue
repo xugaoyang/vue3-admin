@@ -15,7 +15,7 @@
     <el-divider>导航模式</el-divider>
     <div class="nav-types flex justify-around">
       <el-tooltip class="item" effect="dark" content="左侧菜单模式" placement="bottom">
-        <div class="nav-type left-right-type flex">
+        <div class="nav-type left-right-type flex" @click="changeSidebarPosition('left')" :class="{'border-purple-2px': sidebarPosition==='left'}">
           <div class="left"></div>
           <div class="right">
             <div class="top"></div>
@@ -24,7 +24,7 @@
         </div>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="顶部菜单模式" placement="bottom">
-        <div class="nav-type top-bottom-type">
+        <div class="nav-type top-bottom-type" @click="changeSidebarPosition('top')" :class="{'border-purple-2px': sidebarPosition==='top'}">
           <div class="top"></div>
           <div class="bottom flex">
             <div class="left"></div>
@@ -35,7 +35,7 @@
       </el-tooltip>
     </div>
     <el-divider>系统主题</el-divider>
-    <el-color-picker v-model="systemTheme" show-alpha />
+    <el-color-picker v-model="systemTheme" show-alpha @change="changeTheme" />
     <el-divider>顶栏主题</el-divider>
     <el-color-picker v-model="headerTheme" show-alpha />
     <el-divider>菜单主题</el-divider>
@@ -45,7 +45,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
+import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
 
 export default defineComponent({
@@ -60,6 +61,7 @@ export default defineComponent({
     }
   },
   setup(props, { emit }) {
+    const store = useStore()
     const theme = ref(true)
     const navMode = ref('')
     const systemTheme = ref('')
@@ -69,6 +71,15 @@ export default defineComponent({
     const close = () => {
       emit('update:drawer', false)
     }
+    const sidebarPosition = computed(() => {
+      return store.state.sidebarPosition
+    })
+    const changeTheme = () => {
+      console.log(systemTheme.value)
+    }
+    const changeSidebarPosition = (position) => {
+      store.dispatch('changeSidebarPosition', position)
+    }
     return {
       theme,
       navMode,
@@ -76,7 +87,10 @@ export default defineComponent({
       headerTheme,
       menuTheme,
       customConfig,
-      close
+      sidebarPosition,
+      close,
+      changeTheme,
+      changeSidebarPosition
     }
   }
 })
@@ -93,10 +107,15 @@ export default defineComponent({
   background-color: #f0f2f5;
   border-radius: 4px;
   box-shadow: 0 1px 2.5px 0 rgba(0,0,0,.18);
+  border: 2px solid transparent;
   &:hover {
     border: 2px solid #9c27b0;
   }
 }
+.border-purple-2px {
+  border: 2px solid #9c27b0;
+}
+
 .left-right-type {
   .left {
     width: 33%;

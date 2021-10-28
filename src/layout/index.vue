@@ -1,5 +1,5 @@
 <template>
-  <el-container class="layout h-full w-full">
+  <el-container class="layout h-full w-full" v-if="sidebarPosition === 'left'">
     <Sidebar />
     <el-container>
       <el-header class="p-0">
@@ -11,10 +11,31 @@
       </el-main>
     </el-container>
   </el-container>
+  <el-container class="layout h-full w-full" v-else-if="sidebarPosition === 'top'">
+    <el-header class="p-0">
+      <Header>
+        <template v-slot:sidebar>
+          <sidebar mode="horizontal"></sidebar>
+        </template>
+      </Header>
+    </el-header>
+    <el-container>
+      <el-main>
+        <Tags />
+        <router-view />
+      </el-main>
+    </el-container>
+  </el-container>
+  <el-container class="layout h-full w-full" v-else>
+    <el-main>
+      <router-view />
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
 import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
 import Tags from './Tags.vue'
@@ -22,7 +43,13 @@ import Tags from './Tags.vue'
 export default defineComponent({
   components: { Sidebar, Header, Tags },
   setup() {
-    
+    const store = useStore()
+    const sidebarPosition = computed(() => {
+      return store.state.sidebarPosition
+    })
+    return {
+      sidebarPosition
+    }
   },
 })
 </script>

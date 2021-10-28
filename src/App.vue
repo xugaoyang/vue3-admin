@@ -13,8 +13,11 @@ export default {
 </script>
 
 <style scoped>
-  #app {
-    width: 100vw;
-    height: 100vh;
-  }
+:root {
+  --el-color-primary: lightgreen;
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
 
   <!-- <el-aside> -->
-    <el-menu class="h-full side-menu" background-color="#545c64" active-text-color="#ffd04b" text-color="#fff" router :collapse="isMenuCollapse">
+    <el-menu class="h-full side-menu" router :collapse="isMenuCollapse" :mode="menuMode">
       <el-sub-menu index="1">
         <template #title
           ><i class="el-icon-message"></i>
@@ -53,16 +53,25 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default defineComponent({
   setup() {
+    let menuMode = ref('vertical')
     let store = useStore()
     const isMenuCollapse = computed(() => {
       return store.state.isMenuCollapse
     })
+    const sidebarPosition = computed(() => {
+      return store.state.sidebarPosition
+    })
+    console.warn(sidebarPosition.value, menuMode.value)
+    if (sidebarPosition.value === 'top') {
+      menuMode = 'horizontal'
+    }
     return {
+      menuMode,
       isMenuCollapse
     }
   },
@@ -70,7 +79,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.side-menu:not(.el-menu--collapse) {
-  width: 200px;
-}
+// .side-menu:not(.el-menu--collapse) {
+//   width: 200px;
+// }
 </style>
