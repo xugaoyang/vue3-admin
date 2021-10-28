@@ -71,6 +71,13 @@ export default defineComponent({
               children: []
             }
           ]
+        },
+        {
+          name: '导航四',
+          id: '4',
+          icon: 'el-icon-coin',
+          path: '/tool',
+          children: []
         }
       ]
     })
@@ -96,6 +103,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.side-menu {
+  width: 100%;
+}
 // .side-menu:not(.el-menu--collapse) {
 //   width: 200px;
 // }
