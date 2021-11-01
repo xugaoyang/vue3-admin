@@ -2,8 +2,9 @@ import { createApp } from 'vue'
 import router from './router'
 import store from './store'
 import './assets/styles/index.css'
-// import './styles/element/index.scss'
+
 import ElementPlus from 'element-plus'
+// import './styles/element/index.scss'
 import 'element-plus/dist/index.css'
 // import './theme/index.css'
 

@@ -20,6 +20,7 @@ export default defineComponent({
 
 <style scoped>
 .logo {
+  display: inline-block;
   padding: 10px 5px;
   width: 200px;
   height: 100%;

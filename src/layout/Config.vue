@@ -8,7 +8,9 @@
   >
     <el-divider>主题</el-divider>
     <el-switch v-model="theme"
-      active-color="lightgreen"
+      active-icon-class="el-icon-sunny"
+      inactive-icon-class="el-icon-moon"
+      active-color="#ffcf00"
       inactive-color="#000"
       active-text="white"
       inactive-text="black" />
@@ -37,10 +39,16 @@
     <el-divider>系统主题</el-divider>
     <el-color-picker v-model="systemTheme" show-alpha @change="changeTheme" />
     <el-divider>顶栏主题</el-divider>
-    <el-color-picker v-model="headerTheme" show-alpha />
+    <el-color-picker v-model="headerTheme" show-alpha @change="changeHeaderBackground"/>
     <el-divider>菜单主题</el-divider>
-    <el-color-picker v-model="menuTheme" show-alpha />
+    <el-color-picker v-model="menuTheme" show-alpha @change="changeSidebarBackground"/>
     <el-divider>界面功能</el-divider>
+    <div class="flex justify-between">
+      <span>面包屑</span>
+      <el-switch />
+    </div>
+    <el-divider></el-divider>
+    <el-button type="warning" icon="el-icon-refresh" class="w-full">重置</el-button>
   </el-drawer>
 </template>
 
@@ -80,6 +88,12 @@ export default defineComponent({
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
     }
+    const changeSidebarBackground = () => {
+      store.dispatch('changeSidebarBackground', menuTheme.value)
+    }
+    const changeHeaderBackground = () => {
+      store.dispatch('changeHeaderBackground', headerTheme.value)
+    }
     return {
       theme,
       navMode,
@@ -90,7 +104,9 @@ export default defineComponent({
       sidebarPosition,
       close,
       changeTheme,
-      changeSidebarPosition
+      changeSidebarPosition,
+      changeSidebarBackground,
+      changeHeaderBackground
     }
   }
 })
@@ -151,5 +167,8 @@ export default defineComponent({
       background: #ccc;
     }
   }
+}
+/deep/ .el-icon-moon, /deep/ .el-icon-sunny {
+  font-size: 16px;
 }
 </style>

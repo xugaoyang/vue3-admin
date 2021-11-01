@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout h-full w-full" v-if="sidebarPosition === 'left'">
-    <el-aside :width="sidebarWidth">
+    <el-aside :width="sidebarWidth" :style="{backgroundColor: getSidebarBackground}">
       <Sidebar />
     </el-aside>
     <el-container>
@@ -42,6 +42,7 @@ import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
 import Tags from './Tags.vue'
 
+
 export default defineComponent({
   components: { Sidebar, Header, Tags },
   setup() {
@@ -52,9 +53,13 @@ export default defineComponent({
     const sidebarWidth = computed(() => {
       return store.state.isMenuCollapse ? '64px' : '200px'
     })
+    const getSidebarBackground = computed(() => {
+      return store.state.sidebarBackgroundColor
+    })
     return {
       sidebarPosition,
-      sidebarWidth
+      sidebarWidth,
+      getSidebarBackground
     }
   },
 })

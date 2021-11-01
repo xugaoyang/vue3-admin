@@ -1,11 +1,13 @@
 <template>
-  <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode">
-    <sidebar-item
-      v-for="item in menuList"
-      :key="item.id"
-      :item="item"
-    ></sidebar-item>
-  </el-menu>
+  <div>
+    <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode" :background-color="getSidebarBackground">
+      <sidebar-item
+        v-for="item in menuList"
+        :key="item.id"
+        :item="item"
+      ></sidebar-item>
+    </el-menu>
+  </div>
 </template>
 
 <script>
@@ -15,7 +17,7 @@ import SidebarItem from './components/SidebarItem.vue'
 
 export default defineComponent({
   components: {
-    SidebarItem
+    SidebarItem,
   },
   setup() {
     let menuMode = ref('vertical')
@@ -88,7 +90,9 @@ export default defineComponent({
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
-    console.warn(sidebarPosition.value, menuMode.value)
+    const getSidebarBackground = computed(() => {
+      return store.state.sidebarBackgroundColor
+    })
     if (sidebarPosition.value === 'top') {
       menuMode = 'horizontal'
     }
@@ -96,7 +100,8 @@ export default defineComponent({
     return {
       ...params,
       menuMode,
-      isMenuCollapse
+      isMenuCollapse,
+      getSidebarBackground
     }
   },
 })
