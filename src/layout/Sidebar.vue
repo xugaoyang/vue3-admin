@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode" :background-color="getSidebarBackground">
+    <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode" :background-color="sidebarBackground">
       <sidebar-item
         v-for="item in menuList"
         :key="item.id"
@@ -21,6 +21,7 @@ export default defineComponent({
   },
   setup() {
     let menuMode = ref('vertical')
+    let sidebarBackground = ref('')
     const data = reactive({
       menuList: [
         {
@@ -87,20 +88,28 @@ export default defineComponent({
     const isMenuCollapse = computed(() => {
       return store.state.isMenuCollapse
     })
-    const sidebarPosition = computed(() => {
+    const getSidebarPosition = computed(() => {
       return store.state.sidebarPosition
+    })
+    const getHeaderBackground = computed(() => {
+      return store.state.headerBackgroundColor
     })
     const getSidebarBackground = computed(() => {
       return store.state.sidebarBackgroundColor
     })
-    if (sidebarPosition.value === 'top') {
+    if (getSidebarPosition.value === 'top') {
       menuMode = 'horizontal'
+      sidebarBackground = getHeaderBackground
+    } else {
+      sidebarBackground = getSidebarBackground
     }
     const params = toRefs(data)
     return {
       ...params,
       menuMode,
+      sidebarBackground,
       isMenuCollapse,
+      getHeaderBackground,
       getSidebarBackground
     }
   },

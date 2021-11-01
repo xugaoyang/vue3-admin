@@ -37,11 +37,11 @@
       </el-tooltip>
     </div>
     <el-divider>系统主题</el-divider>
-    <el-color-picker v-model="systemTheme" show-alpha @change="changeTheme" />
+    <el-color-picker v-model="systemColor" show-alpha @change="changeTheme" />
     <el-divider>顶栏主题</el-divider>
-    <el-color-picker v-model="headerTheme" show-alpha @change="changeHeaderBackground"/>
+    <el-color-picker v-model="headerColor" show-alpha @change="changeHeaderBackground"/>
     <el-divider>菜单主题</el-divider>
-    <el-color-picker v-model="menuTheme" show-alpha @change="changeSidebarBackground"/>
+    <el-color-picker v-model="sidebarColor" show-alpha @change="changeSidebarBackground"/>
     <el-divider>界面功能</el-divider>
     <div class="flex justify-between">
       <span>面包屑</span>
@@ -72,9 +72,9 @@ export default defineComponent({
     const store = useStore()
     const theme = ref(true)
     const navMode = ref('')
-    const systemTheme = ref('')
-    const headerTheme = ref('')
-    const menuTheme = ref('')
+    const systemColor = ref('')
+    const headerColor = ref('')
+    const sidebarColor = ref('')
     const customConfig = ref({})
     const close = () => {
       emit('update:drawer', false)
@@ -83,23 +83,23 @@ export default defineComponent({
       return store.state.sidebarPosition
     })
     const changeTheme = () => {
-      console.log(systemTheme.value)
+      console.log(systemColor.value)
     }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
     }
     const changeSidebarBackground = () => {
-      store.dispatch('changeSidebarBackground', menuTheme.value)
+      store.dispatch('changeSidebarBackground', sidebarColor.value)
     }
     const changeHeaderBackground = () => {
-      store.dispatch('changeHeaderBackground', headerTheme.value)
+      store.dispatch('changeHeaderBackground', headerColor.value)
     }
     return {
       theme,
       navMode,
-      systemTheme,
-      headerTheme,
-      menuTheme,
+      systemColor,
+      headerColor,
+      sidebarColor,
       customConfig,
       sidebarPosition,
       close,

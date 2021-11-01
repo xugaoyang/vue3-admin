@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
-import { useStore } from 'vuex'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
@@ -22,35 +21,8 @@ export default defineComponent({
     collapse: Boolean
   },
   setup() {
-    const store = useStore()
-    const sidebarPosition = computed(() => {
-      return store.state.sidebarPosition
-    })
-    const isMenuCollapse = computed(() => {
-      return store.state.isMenuCollapse
-    })
-    const handleMenu = () => {
-      // const { menuId, menuName } = obj
-      // let tabs = getTabs()
-      // let flag = true
-      // tabs.forEach((item) => {
-      //   if (item.id === menuId) {
-      //     flag = false
-      //   }
-      // })
-      // if (flag) {
-      //   tabs.push({
-      //     id: menuId,
-      //     name: menuName,
-      //     active: true
-      //   })
-      // }
-      // store.commit('getActiveMenu', menuId)
-      // setTabs(tabs, menuId)
-    }
+    const handleMenu = () => {}
     return {
-      sidebarPosition,
-      isMenuCollapse,
       handleMenu
     }
   }

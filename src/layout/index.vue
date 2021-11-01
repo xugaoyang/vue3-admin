@@ -1,5 +1,5 @@
 <template>
-  <el-container class="layout h-full w-full" v-if="sidebarPosition === 'left'">
+  <el-container class="layout h-full w-full" v-if="getSidebarPosition === 'left'">
     <el-aside :width="sidebarWidth" :style="{backgroundColor: getSidebarBackground}">
       <Sidebar />
     </el-aside>
@@ -13,7 +13,7 @@
       </el-main>
     </el-container>
   </el-container>
-  <el-container class="layout h-full w-full" v-else-if="sidebarPosition === 'top'">
+  <el-container class="layout h-full w-full" v-else-if="getSidebarPosition === 'top'">
     <el-header class="p-0">
       <Header>
         <template v-slot:sidebar>
@@ -47,7 +47,7 @@ export default defineComponent({
   components: { Sidebar, Header, Tags },
   setup() {
     const store = useStore()
-    const sidebarPosition = computed(() => {
+    const getSidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
     const sidebarWidth = computed(() => {
@@ -57,7 +57,7 @@ export default defineComponent({
       return store.state.sidebarBackgroundColor
     })
     return {
-      sidebarPosition,
+      getSidebarPosition,
       sidebarWidth,
       getSidebarBackground
     }
