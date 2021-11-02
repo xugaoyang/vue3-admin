@@ -24,7 +24,6 @@ export default defineComponent({
     const isMenuCollapse = computed(() => {
       return store.state.isMenuCollapse
     })
-    console.log(isMenuCollapse)
     const changeCollapseStatus = (val) => {
       store.dispatch('changeMenuCollapse', val)
     }

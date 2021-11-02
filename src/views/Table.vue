@@ -32,7 +32,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .layout {
-  /deep/ .el-menu{
+  ::v-deep .el-menu{
     border: none;
   } 
 }

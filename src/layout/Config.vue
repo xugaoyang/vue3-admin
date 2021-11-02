@@ -37,11 +37,11 @@
       </el-tooltip>
     </div>
     <el-divider>系统主题</el-divider>
-    <el-color-picker v-model="systemColor" show-alpha @change="changeTheme" />
+    <el-color-picker v-model="systemColor" show-alpha @active-change="changeColor('system', $event)" />
     <el-divider>顶栏主题</el-divider>
-    <el-color-picker v-model="headerColor" show-alpha @change="changeHeaderBackground"/>
-    <el-divider>菜单主题</el-divider>
-    <el-color-picker v-model="sidebarColor" show-alpha @change="changeSidebarBackground"/>
+    <el-color-picker v-model="headerColor" show-alpha @active-change="changeColor('header', $event)"/>
+    <el-divider>侧边栏主题</el-divider>
+    <el-color-picker v-model="sidebarColor" show-alpha @active-change="changeColor('sidebar',$event )"/>
     <el-divider>界面功能</el-divider>
     <div class="flex justify-between">
       <span>面包屑</span>
@@ -71,10 +71,15 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = useStore()
     const theme = ref(true)
-    const navMode = ref('')
-    const systemColor = ref('')
-    const headerColor = ref('')
-    const sidebarColor = ref('')
+    const systemColor = computed(() => {
+      return store.state.systemColor
+    })
+    const headerColor = computed(() => {
+      return store.state.headerBackgroundColor
+    })
+    const sidebarColor = computed(() => {
+      return store.state.sidebarBackgroundColor
+    })
     const customConfig = ref({})
     const close = () => {
       emit('update:drawer', false)
@@ -82,31 +87,37 @@ export default defineComponent({
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
-    const changeTheme = () => {
-      console.log(systemColor.value)
+    const changeColor = (type, value) => {
+      const actions = [
+        {
+          action: 'changeSidebarBackground',
+          type: 'sidebar'
+        },
+        {
+          action: 'changeSidebarBackground',
+          type: 'system'
+        },
+        {
+          action: 'changeHeaderBackground',
+          type: 'header'
+        },
+      ]
+      const currentAction = actions.find(action => action.type === type )
+      store.dispatch(currentAction.action, value)
     }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
     }
-    const changeSidebarBackground = () => {
-      store.dispatch('changeSidebarBackground', sidebarColor.value)
-    }
-    const changeHeaderBackground = () => {
-      store.dispatch('changeHeaderBackground', headerColor.value)
-    }
     return {
       theme,
-      navMode,
       systemColor,
       headerColor,
       sidebarColor,
       customConfig,
       sidebarPosition,
       close,
-      changeTheme,
       changeSidebarPosition,
-      changeSidebarBackground,
-      changeHeaderBackground
+      changeColor
     }
   }
 })
@@ -168,7 +179,7 @@ export default defineComponent({
     }
   }
 }
-/deep/ .el-icon-moon, /deep/ .el-icon-sunny {
+::v-deep .el-icon-moon, ::v-deep .el-icon-sunny {
   font-size: 16px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="w-screen h-screen">
     <router-view />
   </div>
 </template>
@@ -13,11 +13,4 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --el-color-primary: lightgreen;
-}
-#app {
-  width: 100vw;
-  height: 100vh;
-}
 </style>

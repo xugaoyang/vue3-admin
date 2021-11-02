@@ -6,6 +6,7 @@ const store = createStore({
   state: {
       isMenuCollapse: false,
       sidebarPosition: 'left',
+      systemColor: '#fff',
       sidebarBackgroundColor: '#fff',
       headerBackgroundColor: '#fff'
   },
