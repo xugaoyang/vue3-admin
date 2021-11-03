@@ -24,3 +24,5 @@ vue3+ts+element-plus.自研用.
 ](https://chu1204505056.gitee.io/admin-pro/#/index)
 2. [iview](https://adminpro.iviewui.com)
 3. [vbenAdmin](https://vvbin.cn/next/#/dashboard/analysis)
+4. [MDN--var](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())
+5. [css变量教程](https://www.ruanyifeng.com/blog/2017/05/css-variables.html)
