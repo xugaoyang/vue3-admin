@@ -1,4 +1,4 @@
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
+@forward "element-plus/theme-chalk/src/common/var.scss"with ($font-path: '~element-plus/dist/fonts',
   $colors: (
     "primary": (
       "base": rgb(130, 47, 240),
@@ -8,4 +8,4 @@
     ),
   ),
 );
-@use "~element-plus/theme-chalk/src/index.scss";
+@use "element-plus/theme-chalk/src/index.scss";
