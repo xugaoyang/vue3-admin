@@ -5,6 +5,7 @@ import './assets/styles/index.css'
 import './styles/element/index.scss'
 import ElementPlus from 'element-plus'
 // import 'element-plus/dist/index.css'
+import './assets/theme/custom.scss'
 import { Setting, Sunny, Moon } from '@element-plus/icons'
 import App from './App.vue'
 

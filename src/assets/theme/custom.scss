@@ -1,0 +1,20 @@
+@import './theme.scss';
+
+:root {
+  --el-color-primary: var(--systemColor);
+}
+.el-button--default, .el-button--primary {
+  --el-button-font-color: #ffffff;
+  --el-button-background-color: var(--systemColor);
+  --el-button-border-color: var(--systemColor);
+  --el-button-hover-color: var(--systemColor);
+  --el-button-active-font-color: #e6e6e6;
+  --el-button-active-background-color: var(--systemColor);
+  --el-button-active-border-color: var(--systemColor);
+  &:hover,
+  &:focus {
+    background-color: var(--systemColor);
+    color: #ffffff;
+    border-color: var(--systemColor);
+  }
+}

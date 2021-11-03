@@ -7,17 +7,23 @@
     :before-close="close"
   >
     <el-divider>主题</el-divider>
-    <el-switch v-model="theme"
+    <el-switch
+      v-model="theme"
       active-icon-class="el-icon-sunny"
       inactive-icon-class="el-icon-moon"
       active-color="#ffcf00"
       inactive-color="#000"
       active-text="white"
-      inactive-text="black" />
+      inactive-text="black"
+    />
     <el-divider>导航模式</el-divider>
     <div class="nav-types flex justify-around">
       <el-tooltip class="item" effect="dark" content="左侧菜单模式" placement="bottom">
-        <div class="nav-type left-right-type flex" @click="changeSidebarPosition('left')" :class="{'border-purple-2px': sidebarPosition==='left'}">
+        <div
+          class="nav-type left-right-type flex"
+          @click="changeSidebarPosition('left')"
+          :class="{ 'border-purple-2px': sidebarPosition === 'left' }"
+        >
           <div class="left"></div>
           <div class="right">
             <div class="top"></div>
@@ -26,29 +32,32 @@
         </div>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="顶部菜单模式" placement="bottom">
-        <div class="nav-type top-bottom-type" @click="changeSidebarPosition('top')" :class="{'border-purple-2px': sidebarPosition==='top'}">
+        <div
+          class="nav-type top-bottom-type"
+          @click="changeSidebarPosition('top')"
+          :class="{ 'border-purple-2px': sidebarPosition === 'top' }"
+        >
           <div class="top"></div>
           <div class="bottom flex">
             <div class="left"></div>
             <div class="main"></div>
           </div>
-          
         </div>
       </el-tooltip>
     </div>
     <el-divider>系统主题</el-divider>
-    <el-color-picker v-model="systemColor" show-alpha @active-change="changeColor('system', $event)" />
+    <el-color-picker v-model="systemColor" @active-change="changeColor('system', $event)" />
     <el-divider>顶栏主题</el-divider>
-    <el-color-picker v-model="headerColor" show-alpha @active-change="changeColor('header', $event)"/>
+    <el-color-picker v-model="headerColor" @active-change="changeColor('header', $event)" />
     <el-divider>侧边栏主题</el-divider>
-    <el-color-picker v-model="sidebarColor" show-alpha @active-change="changeColor('sidebar',$event )"/>
+    <el-color-picker v-model="sidebarColor" @active-change="changeColor('sidebar', $event)" />
     <el-divider>界面功能</el-divider>
     <div class="flex justify-between">
       <span>面包屑</span>
       <el-switch />
     </div>
     <el-divider></el-divider>
-    <el-button type="warning" icon="el-icon-refresh" class="w-full">重置</el-button>
+    <el-button icon="el-icon-refresh" class="w-full">重置</el-button>
   </el-drawer>
 </template>
 
@@ -60,7 +69,7 @@ import { Sunny, Moon } from '@element-plus/icons'
 export default defineComponent({
   props: {
     drawer: Boolean,
-    direction: String 
+    direction: String
   },
   data() {
     return {
@@ -94,16 +103,19 @@ export default defineComponent({
           type: 'sidebar'
         },
         {
-          action: 'changeSidebarBackground',
+          action: 'changeSystemColor',
           type: 'system'
         },
         {
           action: 'changeHeaderBackground',
           type: 'header'
-        },
+        }
       ]
-      const currentAction = actions.find(action => action.type === type )
+      const currentAction = actions.find((action) => action.type === type)
       store.dispatch(currentAction.action, value)
+      if (type === 'system') {
+        document.querySelector(':root').setAttribute('style', `--systemColor:${value}`)
+      }
     }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
@@ -133,7 +145,7 @@ export default defineComponent({
   cursor: pointer;
   background-color: #f0f2f5;
   border-radius: 4px;
-  box-shadow: 0 1px 2.5px 0 rgba(0,0,0,.18);
+  box-shadow: 0 1px 2.5px 0 rgba(0, 0, 0, 0.18);
   border: 2px solid transparent;
   &:hover {
     border: 2px solid #9c27b0;
@@ -155,20 +167,18 @@ export default defineComponent({
       background: #fff;
     }
     .main {
-      height:32px;
+      height: 32px;
       background: #ccc;
     }
   }
-  
 }
 .top-bottom-type {
   .top {
     height: 16px;
     background: #000;
-    
   }
   .bottom {
-    height:32px;
+    height: 32px;
     .left {
       width: 33%;
       background: #fff;
@@ -179,7 +189,8 @@ export default defineComponent({
     }
   }
 }
-::v-deep .el-icon-moon, ::v-deep .el-icon-sunny {
+::v-deep .el-icon-moon,
+::v-deep .el-icon-sunny {
   font-size: 16px;
 }
 </style>
