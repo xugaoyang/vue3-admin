@@ -6,11 +6,11 @@
     <slot name="sidebar"></slot>
     <div class="header-r flex items-center">
       <span class="pr-10 pl-10 cursor-pointer">vue3</span>
-      <el-icon class="mr-10 ml-10 cursor-pointer" :size="20" color="#000" @click="drawer = true">
+      <el-icon class="mr-10 ml-10 cursor-pointer" :size="20" color="#000" @click="openDrawer">
         <setting />
       </el-icon>
     </div>
-    <Config v-model:drawer="drawer" :direction="direction"></Config>
+    <Config :direction="direction"></Config>
   </div>
   
 </template>
@@ -27,7 +27,6 @@ export default defineComponent({
     Collapse,
   },
   setup() {
-    const drawer = ref(false)
     const direction = ref('rtl')
     const store = useStore()
     const sidebarPosition = computed(() => {
@@ -36,11 +35,14 @@ export default defineComponent({
     const getHeaderColor = computed(() => {
       return store.state.headerColor
     })
+    const openDrawer = () => {
+      store.dispatch('changeDrawerShow', true)
+    }
     return {
-      drawer,
       direction,
       sidebarPosition,
-      getHeaderColor
+      getHeaderColor,
+      openDrawer
     }
   },
 })

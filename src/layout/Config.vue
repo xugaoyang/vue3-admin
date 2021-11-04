@@ -1,10 +1,10 @@
 <template>
   <el-drawer
     size="300px"
-    :model-value="drawer"
+    :model-value="getDrawerShow"
     title="项目配置"
     :direction="direction"
-    :before-close="close"
+    :before-close="closeDrawer"
   >
     <el-divider>主题</el-divider>
     <el-switch
@@ -68,7 +68,6 @@ import { Sunny, Moon } from '@element-plus/icons'
 
 export default defineComponent({
   props: {
-    drawer: Boolean,
     direction: String
   },
   data() {
@@ -77,9 +76,13 @@ export default defineComponent({
       inactive: Moon
     }
   },
-  setup(props, { emit }) {
+  setup() {
     const store = useStore()
     const theme = ref(true)
+    const getDrawerShow = computed({
+      get: () => store.state.isDrawerShow,
+      set: (val) => store.dispatch('changeDrawerShow', val)
+    })
     const systemColor = computed({
       get: () => store.state.systemColor,
       set: (val) => store.dispatch('changeSystemColor', val)
@@ -93,8 +96,8 @@ export default defineComponent({
       set: (val) => store.dispatch('changeSidebarColor', val)
     })
     const customConfig = ref({})
-    const close = () => {
-      emit('update:drawer', false)
+    const closeDrawer = () => {
+      store.dispatch('changeDrawerShow',false)
     }
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
@@ -135,12 +138,13 @@ export default defineComponent({
     }
     return {
       theme,
+      getDrawerShow,
       systemColor,
       headerColor,
       sidebarColor,
       customConfig,
       sidebarPosition,
-      close,
+      closeDrawer,
       changeSidebarPosition,
       activeChangeColor
     }
