@@ -14,9 +14,9 @@ const store = createStore({
     isMenuCollapse: false,
     isDrawerShow: false,
     sidebarPosition: 'left',
-    systemColor: '#fff',
-    sidebarColor: '#fff',
-    headerColor: '#fff'
+    systemColor: '#0960BD',
+    sidebarColor: '#0960bd',
+    headerColor: '#0960bd'
   },
   getters: {
     isMenuCollapse(state) {

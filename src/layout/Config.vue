@@ -46,11 +46,48 @@
       </el-tooltip>
     </div>
     <el-divider>系统主题</el-divider>
-    <el-color-picker v-model="systemColor" @active-change="activeChangeColor('system', $event)" />
+    <div class="flex justify-between">
+      <div
+        class="color-item"
+        v-for="(item, index) in systemColorList"
+        :key="index"
+        :class="{ active: item === systemColor }"
+        :style="{ backgroundColor: item }"
+        @click="activeChangeColor('system', item)"
+      ></div>
+      <el-color-picker
+        size="small"
+        v-model="systemColor"
+        @active-change="activeChangeColor('system', $event)"
+      />
+    </div>
     <el-divider>顶栏主题</el-divider>
-    <el-color-picker v-model="headerColor" @active-change="activeChangeColor('header', $event)" />
+    <div class="flex justify-between">
+      <div
+        class="color-item"
+        v-for="(item, index) in headerColorList"
+        :key="index"
+        :class="{ active: item === headerColor }"
+        :style="{ backgroundColor: item }"
+        @click="activeChangeColor('header', item)"
+      ></div>
+      <el-color-picker v-model="headerColor" @active-change="activeChangeColor('header', $event)" />
+    </div>
     <el-divider>侧边栏主题</el-divider>
-    <el-color-picker v-model="sidebarColor" @active-change="activeChangeColor('sidebar', $event)" />
+    <div class="flex justify-between">
+      <div
+        class="color-item"
+        v-for="(item, index) in sidebarColorList"
+        :key="index"
+        :class="{ active: item === sidebarColor }"
+        :style="{ backgroundColor: item }"
+        @click="activeChangeColor('sidebar', item)"
+      ></div>
+      <el-color-picker
+        v-model="sidebarColor"
+        @active-change="activeChangeColor('sidebar', $event)"
+      />
+    </div>
     <el-divider>界面功能</el-divider>
     <div class="flex justify-between">
       <span>面包屑</span>
@@ -62,7 +99,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
 
@@ -95,9 +132,44 @@ export default defineComponent({
       get: () => store.state.sidebarColor,
       set: (val) => store.dispatch('changeSidebarColor', val)
     })
-    const customConfig = ref({})
+    const customConfig = reactive({
+      theme: '',
+      systemColorList: [
+        '#0960BD',
+        '#0084F4',
+        '#009688',
+        '#536DF3',
+        '#FF5C93',
+        '#EE4F12',
+        '#0096C7',
+        '#9C27B0',
+        '#FF9800'
+      ],
+      headerColorList: [
+        '#0960BD',
+        '#009688',
+        '#5172DC',
+        '#409EFF',
+        '#E74C3C',
+        '#24292E',
+        '#394664',
+        '#001529',
+        '#383F45'
+      ],
+      sidebarColorList: [
+        '#0960BD',
+        '#212121',
+        '#273352',
+        '#191B24',
+        '#191A23',
+        '#304156',
+        '#28333E',
+        '#344058',
+        '#383F45'
+      ]
+    })
     const closeDrawer = () => {
-      store.dispatch('changeDrawerShow',false)
+      store.dispatch('changeDrawerShow', false)
     }
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
@@ -119,7 +191,7 @@ export default defineComponent({
       ]
       const currentAction = actions.find((action) => action.type === type)
       store.dispatch(currentAction.action, value)
-      switch(type) {
+      switch (type) {
         case 'system':
           document.querySelector(':root').setAttribute('style', `--systemColor:${value}`)
           break
@@ -142,7 +214,7 @@ export default defineComponent({
       systemColor,
       headerColor,
       sidebarColor,
-      customConfig,
+      ...toRefs(customConfig),
       sidebarPosition,
       closeDrawer,
       changeSidebarPosition,
@@ -153,6 +225,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/theme/theme.scss';
 .nav-type {
   position: relative;
   width: 56px;
@@ -206,8 +279,33 @@ export default defineComponent({
     }
   }
 }
+.color-item {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  &.active {
+    border-color: $systemColor;
+
+    &::before {
+      content: '\2713';
+      font-size: 14px;
+      color: #fff;
+      position: absolute;
+      top: 1px;
+      left: 7px;
+    }
+  }
+}
 ::v-deep .el-icon-moon,
 ::v-deep .el-icon-sunny {
   font-size: 16px;
+}
+::v-deep .el-color-picker__trigger {
+  padding: 0px;
+  width: 24px!important;
+  height: 24px!important;
+  border: none!important;
 }
 </style>
