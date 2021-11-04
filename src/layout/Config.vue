@@ -50,7 +50,7 @@
     <el-divider>顶栏主题</el-divider>
     <el-color-picker v-model="headerColor" @active-change="activeChangeColor('header', $event)" />
     <el-divider>侧边栏主题</el-divider>
-    <el-color-picker v-model="sidebarColor" @active-change="activeChangeColor('sidebar', $event)" @change="changeColor"/>
+    <el-color-picker v-model="sidebarColor" @active-change="activeChangeColor('sidebar', $event)" />
     <el-divider>界面功能</el-divider>
     <div class="flex justify-between">
       <span>面包屑</span>
@@ -80,14 +80,17 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = useStore()
     const theme = ref(true)
-    const systemColor = computed(() => {
-      return store.state.systemColor
+    const systemColor = computed({
+      get: () => store.state.systemColor,
+      set: (val) => store.dispatch('changeSystemColor', val)
     })
-    const headerColor = computed(() => {
-      return store.state.headerColor
+    const headerColor = computed({
+      get: () => store.state.headerColor,
+      set: (val) => store.dispatch('changeHeaderColor', val)
     })
-    const sidebarColor = computed(() => {
-      return store.state.sidebarColor
+    const sidebarColor = computed({
+      get: () => store.state.sidebarColor,
+      set: (val) => store.dispatch('changeSidebarColor', val)
     })
     const customConfig = ref({})
     const close = () => {
@@ -97,7 +100,6 @@ export default defineComponent({
       return store.state.sidebarPosition
     })
     const activeChangeColor = (type, value) => {
-      
       const actions = [
         {
           action: 'changeSidebarColor',
@@ -128,9 +130,6 @@ export default defineComponent({
           console.log('no change')
       }
     }
-    const changeColor = (val) => {
-      console.log(val)
-    }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
     }
@@ -143,7 +142,6 @@ export default defineComponent({
       sidebarPosition,
       close,
       changeSidebarPosition,
-      changeColor,
       activeChangeColor
     }
   }
