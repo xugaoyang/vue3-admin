@@ -102,7 +102,7 @@
 import { defineComponent, ref, computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
-
+import { hexToRgb, colorGrayLevel } from '../utils/colorTransform'
 export default defineComponent({
   props: {
     direction: String
@@ -191,6 +191,7 @@ export default defineComponent({
       ]
       const currentAction = actions.find((action) => action.type === type)
       store.dispatch(currentAction.action, value)
+      
       switch (type) {
         case 'system':
           document.querySelector(':root').setAttribute('style', `--systemColor:${value}`)
@@ -203,6 +204,13 @@ export default defineComponent({
           break
         default:
           console.log('no change')
+      }
+
+      const isDeepColor = colorGrayLevel(hexToRgb(String(value)), 100) === 'deep'
+      if (isDeepColor) {
+        document.querySelector(':root').setAttribute('style', `--textColor:#fff`)
+      } else {
+        document.querySelector(':root').setAttribute('style', `--textColor:#000`)
       }
     }
     const changeSidebarPosition = (position) => {
