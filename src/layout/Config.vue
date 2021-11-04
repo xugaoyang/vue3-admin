@@ -46,11 +46,11 @@
       </el-tooltip>
     </div>
     <el-divider>系统主题</el-divider>
-    <el-color-picker v-model="systemColor" @active-change="changeColor('system', $event)" />
+    <el-color-picker v-model="systemColor" @active-change="activeChangeColor('system', $event)" />
     <el-divider>顶栏主题</el-divider>
-    <el-color-picker v-model="headerColor" @active-change="changeColor('header', $event)" />
+    <el-color-picker v-model="headerColor" @active-change="activeChangeColor('header', $event)" />
     <el-divider>侧边栏主题</el-divider>
-    <el-color-picker v-model="sidebarColor" @active-change="changeColor('sidebar', $event)" />
+    <el-color-picker v-model="sidebarColor" @active-change="activeChangeColor('sidebar', $event)" @change="changeColor"/>
     <el-divider>界面功能</el-divider>
     <div class="flex justify-between">
       <span>面包屑</span>
@@ -84,10 +84,10 @@ export default defineComponent({
       return store.state.systemColor
     })
     const headerColor = computed(() => {
-      return store.state.headerBackgroundColor
+      return store.state.headerColor
     })
     const sidebarColor = computed(() => {
-      return store.state.sidebarBackgroundColor
+      return store.state.sidebarColor
     })
     const customConfig = ref({})
     const close = () => {
@@ -96,10 +96,11 @@ export default defineComponent({
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
-    const changeColor = (type, value) => {
+    const activeChangeColor = (type, value) => {
+      
       const actions = [
         {
-          action: 'changeSidebarBackground',
+          action: 'changeSidebarColor',
           type: 'sidebar'
         },
         {
@@ -107,15 +108,28 @@ export default defineComponent({
           type: 'system'
         },
         {
-          action: 'changeHeaderBackground',
+          action: 'changeHeaderColor',
           type: 'header'
         }
       ]
       const currentAction = actions.find((action) => action.type === type)
       store.dispatch(currentAction.action, value)
-      if (type === 'system') {
-        document.querySelector(':root').setAttribute('style', `--systemColor:${value}`)
+      switch(type) {
+        case 'system':
+          document.querySelector(':root').setAttribute('style', `--systemColor:${value}`)
+          break
+        case 'sidebar':
+          document.querySelector(':root').setAttribute('style', `--sidebarColor:${value}`)
+          break
+        case 'header':
+          document.querySelector(':root').setAttribute('style', `--headerColor:${value}`)
+          break
+        default:
+          console.log('no change')
       }
+    }
+    const changeColor = (val) => {
+      console.log(val)
     }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
@@ -129,7 +143,8 @@ export default defineComponent({
       sidebarPosition,
       close,
       changeSidebarPosition,
-      changeColor
+      changeColor,
+      activeChangeColor
     }
   }
 })

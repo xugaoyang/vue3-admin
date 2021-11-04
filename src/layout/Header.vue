@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between h-full w-full" :style="{backgroundColor: getHeaderBackground}">
+  <div class="flex justify-between h-full w-full" :style="{backgroundColor: getHeaderColor}">
     <div class="header-l flex">
       <Collapse v-if="sidebarPosition === 'left'"></Collapse>
     </div>
@@ -33,14 +33,14 @@ export default defineComponent({
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
-    const getHeaderBackground = computed(() => {
-      return store.state.headerBackgroundColor
+    const getHeaderColor = computed(() => {
+      return store.state.headerColor
     })
     return {
       drawer,
       direction,
       sidebarPosition,
-      getHeaderBackground
+      getHeaderColor
     }
   },
 })

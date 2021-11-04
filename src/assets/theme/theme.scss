@@ -1,6 +1,14 @@
 :root {
   --systemColor: #0960bd;
+  --sidebarColor: #0960bd;
+  --headerColor: #ffffff;
+  --textColor: #000;
+  --borderColor: #fff;
+  --contentBackgroundColor: #fff;
 }
 $systemColor: var(--systemColor);
-
-
+$sidebarColor: var(--sidebarColor);
+$headerColor: var(--headerColor);
+$textColor: var(--textColor);
+$borderColor: var(--borderColor);
+$contentBackgroundColor: var(--contentBackgroundColor);

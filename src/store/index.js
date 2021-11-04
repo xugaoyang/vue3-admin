@@ -3,8 +3,8 @@ import createPersistedState from 'vuex-persistedstate'
 import {
   CHANGE_MENU_COLLAPSE,
   CHANGE_SIDEBAR_POSITION,
-  CHANGE_SIDEBAR_BACKGROUND,
-  CHANGE_HEADER_BACKGROUND,
+  CHANGE_SIDEBAR_COLOR,
+  CHANGE_HEADER_COLOR,
   CHANGE_SYSTEM_COLOR
 } from './mutation-types'
 
@@ -13,8 +13,8 @@ const store = createStore({
     isMenuCollapse: false,
     sidebarPosition: 'left',
     systemColor: '#fff',
-    sidebarBackgroundColor: '#fff',
-    headerBackgroundColor: '#fff'
+    sidebarColor: '#fff',
+    headerColor: '#fff'
   },
   getters: {
     isMenuCollapse(state) {
@@ -26,11 +26,11 @@ const store = createStore({
     systemColor(state) {
       return state.systemColor
     },
-    sidebarBackgroundColor(state) {
-      return state.sidebarBackgroundColor
+    sidebarColor(state) {
+      return state.sidebarColor
     },
-    headerBackgroundColor(state) {
-      return state.headerBackgroundColor
+    headerColor(state) {
+      return state.headerColor
     }
   },
   mutations: {
@@ -43,11 +43,11 @@ const store = createStore({
     [CHANGE_SYSTEM_COLOR](state, payload) {
       state.systemColor = payload
     },
-    [CHANGE_SIDEBAR_BACKGROUND](state, payload) {
-      state.sidebarBackgroundColor = payload
+    [CHANGE_SIDEBAR_COLOR](state, payload) {
+      state.sidebarColor = payload
     },
-    [CHANGE_HEADER_BACKGROUND](state, payload) {
-      state.headerBackgroundColor = payload
+    [CHANGE_HEADER_COLOR](state, payload) {
+      state.headerColor = payload
     }
   },
   actions: {
@@ -57,14 +57,14 @@ const store = createStore({
     changeSidebarPosition({ commit }, payload) {
       commit('CHANGE_SIDEBAR_POSITION', payload)
     },
-    changeSidebarBackground({ commit }, payload) {
-      commit('CHANGE_SIDEBAR_BACKGROUND', payload)
+    changeSidebarColor({ commit }, payload) {
+      commit('CHANGE_SIDEBAR_COLOR', payload)
     },
     changeSystemColor({ commit }, payload) {
       commit('CHANGE_SYSTEM_COLOR', payload)
     },
-    changeHeaderBackground({ commit }, payload) {
-      commit('CHANGE_HEADER_BACKGROUND', payload)
+    changeHeaderColor({ commit }, payload) {
+      commit('CHANGE_HEADER_COLOR', payload)
     }
   },
   plugins: [createPersistedState()]

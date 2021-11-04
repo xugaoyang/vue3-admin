@@ -1,8 +1,23 @@
 @import './theme.scss';
 
 :root {
+  --el-color-white: #ffffff;
+  --el-color-black: #000000;
   --el-color-primary: var(--systemColor);
+  --el-color-success: #27ce22;
+  --el-color-warning: #e6a23c;
+  --el-color-danger: #f56c6c;
+  --el-color-error: #f56c6c;
+  --el-color-info: #909399;
+  --el-text-color-primary: #303133;
+  --el-text-color-placeholder: #c0c4cc;
+  --el-border-color-base: #dcdfe6;
+  --el-background-color-base: #f5f7fa;
+  --el-font-color-disabled-base: #bbb;
 }
+
+
+
 .el-button--default, .el-button--primary {
   --el-button-font-color: #ffffff;
   --el-button-background-color: var(--systemColor);

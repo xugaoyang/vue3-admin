@@ -1,15 +1,15 @@
 <template>
   <el-container class="layout h-full w-full" v-if="getSidebarPosition === 'left'">
-    <el-aside :width="sidebarWidth" :style="{backgroundColor: getSidebarBackground}">
+    <el-aside :width="sidebarWidth" :style="{backgroundColor: getSidebarColor}">
       <Sidebar />
     </el-aside>
     <el-container>
       <el-header class="p-0">
         <Header />
       </el-header>
-      <el-main>
+      <el-main clas="p-10">
         <Tags />
-        <router-view />
+        <router-view :style="{height: contentHeight}" />
       </el-main>
     </el-container>
   </el-container>
@@ -22,9 +22,9 @@
       </Header>
     </el-header>
     <el-container>
-      <el-main>
+      <el-main class="p-10">
         <Tags />
-        <router-view />
+        <router-view :style="{height: contentHeight}" />
       </el-main>
     </el-container>
   </el-container>
@@ -53,13 +53,17 @@ export default defineComponent({
     const sidebarWidth = computed(() => {
       return store.state.isMenuCollapse ? '64px' : '200px'
     })
-    const getSidebarBackground = computed(() => {
-      return store.state.sidebarBackgroundColor
+    const contentHeight = computed(() => {
+      return 'calc(100% - 50px)'
+    })
+    const getSidebarColor = computed(() => {
+      return store.state.sidebarColor
     })
     return {
+      contentHeight,
       getSidebarPosition,
       sidebarWidth,
-      getSidebarBackground
+      getSidebarColor
     }
   },
 })
