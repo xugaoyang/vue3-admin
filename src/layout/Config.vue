@@ -11,10 +11,7 @@
       v-model="theme"
       active-icon-class="el-icon-sunny"
       inactive-icon-class="el-icon-moon"
-      active-color="#ffcf00"
-      inactive-color="#000"
-      active-text="white"
-      inactive-text="black"
+      @change="themeChange"
     />
     <el-divider>导航模式</el-divider>
     <div class="nav-types flex justify-around">
@@ -236,7 +233,18 @@ export default defineComponent({
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
     }
-    
+    const themeChange = (val) => {
+      let bodyClass = document.querySelector('body').getAttribute('class')
+      const hasDarkClass = bodyClass.includes('dark-theme')
+      if (val) {
+        // 在body移除 class:dark-theme
+        bodyClass = hasDarkClass ? bodyClass.replace(/dark-theme/, '') : bodyClass
+      } else {
+        // 在body添加 class:dark-theme
+        bodyClass = hasDarkClass ? bodyClass : `${bodyClass} dark-theme`
+      }
+      document.querySelector('body').setAttribute('class', bodyClass)
+    }
     return {
       theme,
       getDrawerShow,
@@ -247,7 +255,8 @@ export default defineComponent({
       sidebarPosition,
       closeDrawer,
       changeSidebarPosition,
-      activeChangeColor
+      activeChangeColor,
+      themeChange
     }
   }
 })
