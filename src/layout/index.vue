@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout h-full w-full" v-if="getSidebarPosition === 'left'">
-    <el-aside :width="sidebarWidth" :style="{backgroundColor: getSidebarColor}">
+    <el-aside :width="sidebarWidth">
       <Sidebar />
     </el-aside>
     <el-container>
@@ -56,14 +56,10 @@ export default defineComponent({
     const contentHeight = computed(() => {
       return 'calc(100% - 50px)'
     })
-    const getSidebarColor = computed(() => {
-      return store.state.sidebarColor
-    })
     return {
       contentHeight,
       getSidebarPosition,
       sidebarWidth,
-      getSidebarColor
     }
   },
 })

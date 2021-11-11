@@ -1,14 +1,30 @@
 :root {
-  --systemColor: #0960bd;
-  --sidebarColor: #0960bd;
-  --headerColor: #ffffff;
+  --systemColor: #009688;
+  --sidebarBgColor: #aaa;
+  --sidebarTextColor: #000;
+  --headerBgColor: #ffffff;
+  --headerTextColor: #000;
   --textColor: #000;
   --borderColor: #fff;
-  --contentBackgroundColor: #fff;
+  --contentBgColor: #fff;
 }
+
+.dark-theme {
+  --systemColor: #009688;
+  --sidebarBgColor: #000;
+  --sidebarTextColor: #fff;
+  --headerBgColor: #000;
+  --headerTextColor: #fff;
+  --textColor: #fff;
+  --borderColor: #333;
+  --contentBgColor: #000;
+}
+
 $systemColor: var(--systemColor);
-$sidebarColor: var(--sidebarColor);
-$headerColor: var(--headerColor);
+$sidebarBgColor: var(--sidebarBgColor);
+$sidebarTextColor: var(--sidebarTextColor);
+$headerBgColor: var(--headerBgColor);
+$headerTextColor: var(--headerTextColor);
 $textColor: var(--textColor);
 $borderColor: var(--borderColor);
-$contentBackgroundColor: var(--contentBackgroundColor);
+$contentBgColor: var(--contentBgColor);

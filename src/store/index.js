@@ -14,9 +14,9 @@ const store = createStore({
     isMenuCollapse: false,
     isDrawerShow: false,
     sidebarPosition: 'left',
-    systemColor: '#0960BD',
-    sidebarColor: '#0960bd',
-    headerColor: '#0960bd'
+    systemColor: '#009688',
+    sidebarBgColor: '#aaa',
+    headerBgColor: '#fff'
   },
   getters: {
     isMenuCollapse(state) {
@@ -31,11 +31,11 @@ const store = createStore({
     systemColor(state) {
       return state.systemColor
     },
-    sidebarColor(state) {
-      return state.sidebarColor
+    sidebarBgColor(state) {
+      return state.sidebarBgColor
     },
-    headerColor(state) {
-      return state.headerColor
+    headerBgColor(state) {
+      return state.headerBgColor
     }
   },
   mutations: {
@@ -52,10 +52,10 @@ const store = createStore({
       state.systemColor = payload
     },
     [CHANGE_SIDEBAR_COLOR](state, payload) {
-      state.sidebarColor = payload
+      state.sidebarBgColor = payload
     },
     [CHANGE_HEADER_COLOR](state, payload) {
-      state.headerColor = payload
+      state.headerBgColor = payload
     }
   },
   actions: {
@@ -68,13 +68,13 @@ const store = createStore({
     changeSidebarPosition({ commit }, payload) {
       commit('CHANGE_SIDEBAR_POSITION', payload)
     },
-    changeSidebarColor({ commit }, payload) {
+    changeSidebarBgColor({ commit }, payload) {
       commit('CHANGE_SIDEBAR_COLOR', payload)
     },
     changeSystemColor({ commit }, payload) {
       commit('CHANGE_SYSTEM_COLOR', payload)
     },
-    changeHeaderColor({ commit }, payload) {
+    changeHeaderBgColor({ commit }, payload) {
       commit('CHANGE_HEADER_COLOR', payload)
     }
   },

@@ -94,7 +94,7 @@
       <el-switch />
     </div>
     <el-divider></el-divider>
-    <el-button icon="el-icon-refresh" class="w-full">重置</el-button>
+    <el-button type="primary" icon="el-icon-refresh" class="w-full">重置</el-button>
   </el-drawer>
 </template>
 
@@ -103,6 +103,8 @@ import { defineComponent, ref, computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
 import { hexToRgb, colorGrayLevel } from '../utils/colorTransform'
+import { uniqStringByReg } from '../utils/common'
+
 export default defineComponent({
   props: {
     direction: String
@@ -125,12 +127,12 @@ export default defineComponent({
       set: (val) => store.dispatch('changeSystemColor', val)
     })
     const headerColor = computed({
-      get: () => store.state.headerColor,
-      set: (val) => store.dispatch('changeHeaderColor', val)
+      get: () => store.state.headerBgColor,
+      set: (val) => store.dispatch('changeHeaderBgColor', val)
     })
     const sidebarColor = computed({
-      get: () => store.state.sidebarColor,
-      set: (val) => store.dispatch('changeSidebarColor', val)
+      get: () => store.state.sidebarBgColor,
+      set: (val) => store.dispatch('changeSidebarBgColor', val)
     })
     const customConfig = reactive({
       theme: '',
@@ -177,7 +179,7 @@ export default defineComponent({
     const activeChangeColor = (type, value) => {
       const actions = [
         {
-          action: 'changeSidebarColor',
+          action: 'changeSidebarBgColor',
           type: 'sidebar'
         },
         {
@@ -185,37 +187,56 @@ export default defineComponent({
           type: 'system'
         },
         {
-          action: 'changeHeaderColor',
+          action: 'changeHeaderBgColor',
           type: 'header'
         }
       ]
+
       const currentAction = actions.find((action) => action.type === type)
       store.dispatch(currentAction.action, value)
-      
+
+      // 获取根元素的属性
+      let rootStyle = document.querySelector(':root').getAttribute('style')
+      rootStyle = rootStyle === null ? '' : rootStyle
+
+      // 获取当前配置色的灰度，判断深色还是浅色
+      const isDeepColor = colorGrayLevel(hexToRgb(String(value)), 100) === 'deep'
+
+      // 优先判断style是否有重复属性
       switch (type) {
         case 'system':
-          document.querySelector(':root').setAttribute('style', `--systemColor:${value}`)
+          rootStyle = uniqStringByReg(rootStyle, '--systemColor')
+          rootStyle += `--systemColor:${value};`
           break
         case 'sidebar':
-          document.querySelector(':root').setAttribute('style', `--sidebarColor:${value}`)
+          rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
+          rootStyle += `--sidebarBgColor:${value};`
+          rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
+          if (isDeepColor) {
+            rootStyle += `--sidebarTextColor:#fff;`
+          } else {
+            rootStyle += `--sidebarTextColor:#000;`
+          }
           break
         case 'header':
-          document.querySelector(':root').setAttribute('style', `--headerColor:${value}`)
+          rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
+          rootStyle += `--headerBgColor:${value};`
+          rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
+          if (isDeepColor) {
+            rootStyle += `--headerTextColor:#fff;`
+          } else {
+            rootStyle += `--headerTextColor:#000;`
+          }
           break
         default:
           console.log('no change')
       }
-
-      const isDeepColor = colorGrayLevel(hexToRgb(String(value)), 100) === 'deep'
-      if (isDeepColor) {
-        document.querySelector(':root').setAttribute('style', `--textColor:#fff`)
-      } else {
-        document.querySelector(':root').setAttribute('style', `--textColor:#000`)
-      }
+      document.querySelector(':root').setAttribute('style', rootStyle)
     }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
     }
+    
     return {
       theme,
       getDrawerShow,
@@ -312,8 +333,8 @@ export default defineComponent({
 }
 ::v-deep .el-color-picker__trigger {
   padding: 0px;
-  width: 24px!important;
-  height: 24px!important;
-  border: none!important;
+  width: 24px !important;
+  height: 24px !important;
+  border: none !important;
 }
 </style>

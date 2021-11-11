@@ -19,6 +19,11 @@ const routes = [
         path: 'helloworld',
         name: 'helloworld',
         component: () => import(/* webpackChunkName: 'helloworld' */ '../views/HelloWorld.vue')
+      },
+      {
+        path: 'elementComponents',
+        name: 'elementComponents',
+        component: () => import(/* webpackChunkName: 'elementComponents' */ '../views/ElementComps.vue')
       }
     ]
   }

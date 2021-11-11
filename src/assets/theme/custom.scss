@@ -16,7 +16,8 @@
   --el-font-color-disabled-base: #bbb;
 }
 
-.el-button--default, .el-button--primary {
+// BUTTON
+.el-button--primary {
   --el-button-font-color: #ffffff;
   --el-button-background-color: var(--systemColor);
   --el-button-border-color: var(--systemColor);
@@ -29,5 +30,138 @@
     background-color: var(--systemColor);
     color: #ffffff;
     border-color: var(--systemColor);
+  }
+}
+
+// HEADER
+.el-header {
+  color: var(--headerTextColor);
+  background-color: var(--headerBgColor);
+  .el-icon {
+    color: var(--headerTextColor);
+  }
+}
+
+// SIDEBAR
+.el-aside {
+  color: var(--sidebarTextColor);
+  background-color: var(--sidebarBgColor);
+}
+
+.el-menu {
+  color: var(--sidebarTextColor);
+  background-color: var(--sidebarBgColor);
+  .el-menu-item,
+  .el-sub-menu__title {
+    color: var(--sidebarTextColor);
+  }
+  .el-menu-item:hover,
+  .el-sub-menu__title:hover {
+    background-color: var(--systemColor);
+  }
+}
+
+// MAIN
+
+.el-main {
+  background-color: var(--contentBgColor);
+}
+
+// CARD
+.el-card {
+}
+
+// DRAWER
+.el-drawer {
+}
+
+// INPUT
+
+.el-input {
+  background-color: var(--contentBgColor);
+}
+
+// ICON
+.el-icon {
+}
+
+.dark-theme {
+  // INPUT
+  .el-input__inner {
+    background-color: var(--contentBgColor);
+  }
+
+  // DATE-PICKER
+  .el-picker-panel {
+    background-color: var(--contentBgColor);
+  }
+  .el-picker__popper.el-popper[role='tooltip'] {
+    background-color: var(--contentBgColor);
+  }
+
+  // SELECT
+  .el-select__popper.el-popper[role='tooltip'] {
+    background-color: var(--contentBgColor);
+  }
+
+  // CARD
+  .el-card {
+    background-color: var(--contentBgColor);
+  }
+
+  // POPPER
+  .el-popper .el-popper__arrow::before {
+    background-color: var(--contentBgColor);
+  }
+
+  // TRANSFER
+  .el-transfer-panel {
+    background-color: var(--contentBgColor);
+    .el-transfer-panel__header {
+      background-color: var(--contentBgColor);
+    }
+    .el-transfer-panel__footer {
+      background-color: var(--contentBgColor);
+    }
+  }
+
+  // CALENDAR
+  .el-calendar {
+    background-color: var(--contentBgColor);
+    color: var(--textColor);
+    .el-calendar-table {
+      .el-calendar-day:hover {
+        color: var(--contentBgColor);
+      }
+      td.is-selected {
+        color: var(--contentBgColor);
+      }
+    }
+  }
+
+  // TREE
+  .el-tree {
+    background-color: var(--contentBgColor);
+    color: var(--textColor);
+    .el-tree-node__content:hover {
+      background-color: transparent;
+    }
+  }
+
+  // TABS
+  .el-tabs__item {
+    color: var(--textColor);
+  }
+
+  // TABLE
+  .el-table {
+    .el-table__cell {
+      background-color: var(--contentBgColor);
+    }
+  }
+
+  // MASK
+  .el-loading-mask {
+    background-color: var(--contentBgColor);
   }
 }

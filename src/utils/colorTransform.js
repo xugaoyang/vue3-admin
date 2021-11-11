@@ -1,6 +1,6 @@
 
 export const hexToRgb = (color) => {
-  const reg = /^#([0-9a-fA-F]{3}|[0-9a-fA-f]{6})$/
+  const reg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/
   color = color.toLowerCase()
   if (reg.test(color)) {
     if (color.length === 4) {

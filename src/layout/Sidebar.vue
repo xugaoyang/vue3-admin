@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode" :background-color="getSidebarColor">
+    <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode">
       <sidebar-item
         v-for="item in menuList"
         :key="item.id"
@@ -90,21 +90,17 @@ export default defineComponent({
     const getSidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
-    const getHeaderColor = computed(() => {
-      return store.state.headerColor
-    })
-    const getSidebarColor = computed(() => {
-      return store.state.sidebarColor
-    })
+    // const getHeaderColor = computed(() => {
+    //   return store.state.headerColor
+    // })
     if (getSidebarPosition.value === 'top') {
       menuMode = 'horizontal'
-      store.dispatch('changeSidebarColor', getHeaderColor)
+      // store.dispatch('changeSidebarBgColor', getHeaderColor)
     }
     const params = toRefs(data)
     return {
       ...params,
       menuMode,
-      getSidebarColor,
       isMenuCollapse,
     }
   },
