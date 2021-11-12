@@ -234,16 +234,16 @@ export default defineComponent({
       store.dispatch('changeSidebarPosition', position)
     }
     const themeChange = (val) => {
-      let bodyClass = document.querySelector('body').getAttribute('class')
-      const hasDarkClass = bodyClass.includes('dark-theme')
+      let themeClass = document.querySelector('html').getAttribute('class') || ''
+      // const hasDarkClass = themeClass.includes('dark-theme')
       if (val) {
-        // 在body移除 class:dark-theme
-        bodyClass = hasDarkClass ? bodyClass.replace(/dark-theme/, '') : bodyClass
+        // 移除 class:dark-theme
+        themeClass = ''
       } else {
-        // 在body添加 class:dark-theme
-        bodyClass = hasDarkClass ? bodyClass : `${bodyClass} dark-theme`
+        // 添加 class:dark-theme
+        themeClass = 'dark-theme'
       }
-      document.querySelector('body').setAttribute('class', bodyClass)
+      document.querySelector('html').setAttribute('class', themeClass)
     }
     return {
       theme,
@@ -345,5 +345,11 @@ export default defineComponent({
   width: 24px !important;
   height: 24px !important;
   border: none !important;
+}
+::v-deep .el-divider__text {
+  color: #000;
+}
+::v-deep .el-switch__label {
+  color: #000;
 }
 </style>
