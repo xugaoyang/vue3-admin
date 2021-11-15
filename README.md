@@ -1,5 +1,5 @@
 # vue3-admin
-vue3+ts+element-plus.自研用.
+vue3 + element-plus.自研用.
 
 ### vue3 api
 
