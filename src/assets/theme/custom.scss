@@ -59,12 +59,17 @@
   .el-sub-menu__title:hover {
     background-color: var(--systemColor);
   }
+  // when el-menu is horizontal
   &.el-menu--horizontal {
     color: var(--headerTextColor);
     background-color: var(--headerBgColor);
     .el-menu-item,
     .el-sub-menu__title {
       color: var(--headerTextColor);
+    }
+    .el-menu-item:hover,
+    .el-sub-menu__title:hover {
+      background-color: var(--systemColor);
     }
   }
 }
@@ -91,6 +96,18 @@
 
 // ICON
 .el-icon {
+}
+
+// POPPER
+.el-popper {
+  .el-menu--horizontal .el-menu .el-menu-item,
+  .el-menu--horizontal .el-menu .el-sub-menu__title {
+    background-color: var(--headerBgColor);
+  }
+  .el-menu--horizontal .el-menu-item:not(.is-disabled):hover,
+  .el-menu--horizontal .el-menu-item:not(.is-disabled):focus {
+    background-color: var(--systemColor);
+  }
 }
 
 .dark-theme {
