@@ -239,10 +239,11 @@ export default defineComponent({
       if (val) {
         // 移除 class:dark-theme
         themeClass = ''
+        store.dispatch('changeTheme', 'light')
       } else {
-        // 添加 class:dark-theme
-        themeClass = 'dark-theme'
-
+        // 添加 class:dark
+        themeClass = 'dark'
+        store.dispatch('changeTheme', 'dark')
         // 切换暗模式，强制重置头部和侧边背景色以及文字颜色
         let rootStyle = document.querySelector(':root').getAttribute('style')
         rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')

@@ -6,7 +6,8 @@ import {
   CHANGE_SIDEBAR_POSITION,
   CHANGE_SIDEBAR_COLOR,
   CHANGE_HEADER_COLOR,
-  CHANGE_SYSTEM_COLOR
+  CHANGE_SYSTEM_COLOR,
+  CHANGE_THEME
 } from './mutation-types'
 
 const store = createStore({
@@ -16,7 +17,8 @@ const store = createStore({
     sidebarPosition: 'left',
     systemColor: '#009688',
     sidebarBgColor: '#aaa',
-    headerBgColor: '#fff'
+    headerBgColor: '#fff',
+    theme: 'light'
   },
   getters: {
     isMenuCollapse(state) {
@@ -36,6 +38,9 @@ const store = createStore({
     },
     headerBgColor(state) {
       return state.headerBgColor
+    },
+    theme(state) {
+      return state.theme
     }
   },
   mutations: {
@@ -56,6 +61,9 @@ const store = createStore({
     },
     [CHANGE_HEADER_COLOR](state, payload) {
       state.headerBgColor = payload
+    },
+    [CHANGE_THEME](state, payload) {
+      state.theme = payload
     }
   },
   actions: {
@@ -76,6 +84,9 @@ const store = createStore({
     },
     changeHeaderBgColor({ commit }, payload) {
       commit('CHANGE_HEADER_COLOR', payload)
+    },
+    changeTheme({ commit }, payload) {
+      commit('CHANGE_THEME', payload)
     }
   },
   plugins: [createPersistedState()]
