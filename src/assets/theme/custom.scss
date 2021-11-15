@@ -59,6 +59,14 @@
   .el-sub-menu__title:hover {
     background-color: var(--systemColor);
   }
+  &.el-menu--horizontal {
+    color: var(--headerTextColor);
+    background-color: var(--headerBgColor);
+    .el-menu-item,
+    .el-sub-menu__title {
+      color: var(--headerTextColor);
+    }
+  }
 }
 
 // MAIN

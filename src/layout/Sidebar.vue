@@ -1,11 +1,12 @@
 <template>
   <div>
-    <el-menu class="h-full side-menu no-transition" router :collapse="isMenuCollapse" :mode="menuMode">
-      <sidebar-item
-        v-for="item in menuList"
-        :key="item.id"
-        :item="item"
-      ></sidebar-item>
+    <el-menu
+      class="h-full side-menu no-transition"
+      router
+      :collapse="isMenuCollapse"
+      :mode="menuMode"
+    >
+      <sidebar-item v-for="item in menuList" :key="item.id" :item="item"></sidebar-item>
     </el-menu>
   </div>
 </template>
@@ -17,7 +18,7 @@ import SidebarItem from './components/SidebarItem.vue'
 
 export default defineComponent({
   components: {
-    SidebarItem,
+    SidebarItem
   },
   setup() {
     let menuMode = ref('vertical')
@@ -84,26 +85,20 @@ export default defineComponent({
       ]
     })
     let store = useStore()
-    const isMenuCollapse = computed(() => {
-      return store.state.isMenuCollapse
-    })
-    const getSidebarPosition = computed(() => {
-      return store.state.sidebarPosition
-    })
-    // const getHeaderColor = computed(() => {
-    //   return store.state.headerColor
-    // })
+    const isMenuCollapse = computed(() => store.state.isMenuCollapse)
+    const getSidebarPosition = computed(() => store.state.sidebarPosition)
+    const getHeaderBgColor = computed(() => store.state.headerBgColor)
     if (getSidebarPosition.value === 'top') {
       menuMode = 'horizontal'
-      // store.dispatch('changeSidebarBgColor', getHeaderColor)
+      store.dispatch('changeSidebarBgColor', getHeaderBgColor.value)
     }
     const params = toRefs(data)
     return {
       ...params,
       menuMode,
-      isMenuCollapse,
+      isMenuCollapse
     }
-  },
+  }
 })
 </script>
 

@@ -9,7 +9,7 @@
       </el-header>
       <el-main clas="p-10">
         <Tags />
-        <router-view :style="{height: contentHeight}" />
+        <router-view :style="{ height: contentHeight }" />
       </el-main>
     </el-container>
   </el-container>
@@ -21,12 +21,10 @@
         </template>
       </Header>
     </el-header>
-    <el-container>
-      <el-main class="p-10">
-        <Tags />
-        <router-view :style="{height: contentHeight}" />
-      </el-main>
-    </el-container>
+    <el-main class="p-10">
+      <Tags />
+      <router-view :style="{ height: contentHeight }" />
+    </el-main>
   </el-container>
   <el-container class="layout h-full w-full" v-else>
     <el-main>
@@ -41,7 +39,7 @@ import { useStore } from 'vuex'
 import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
 import Tags from './Tags.vue'
-
+import { uniqStringByReg } from '../utils/common'
 
 export default defineComponent({
   components: { Sidebar, Header, Tags },
@@ -56,20 +54,34 @@ export default defineComponent({
     const contentHeight = computed(() => {
       return 'calc(100% - 50px)'
     })
+    const systemColor = computed(() => store.state.systemColor)
+    const headerBgColor = computed(() => store.state.headerBgColor)
+    const sidebarBgColor = computed(() => store.state.sidebarBgColor)
+
+    // 初始化
+    let rootStyle = document.querySelector(':root').getAttribute('style')
+    rootStyle = rootStyle === null ? '' : rootStyle
+    rootStyle = uniqStringByReg(rootStyle, '--systemColor')
+    rootStyle += `--systemColor:${systemColor.value};`
+    rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
+    rootStyle += `--headerBgColor:${headerBgColor.value};`
+    rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
+    rootStyle += `--sidebarBgColor:${sidebarBgColor.value};`
+    document.querySelector(':root').setAttribute('style', rootStyle)
+
     return {
       contentHeight,
       getSidebarPosition,
-      sidebarWidth,
+      sidebarWidth
     }
-  },
+  }
 })
 </script>
 
 <style lang="scss" scoped>
 .layout {
-  ::v-deep .el-menu{
+  ::v-deep .el-menu {
     border: none;
-  } 
+  }
 }
-
 </style>
