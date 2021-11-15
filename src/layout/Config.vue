@@ -62,26 +62,26 @@
     <div class="flex justify-between">
       <div
         class="color-item"
-        v-for="(item, index) in headerColorList"
+        v-for="(item, index) in headerBgColorList"
         :key="index"
-        :class="{ active: item === headerColor }"
+        :class="{ active: item === headerBgColor }"
         :style="{ backgroundColor: item }"
         @click="activeChangeColor('header', item)"
       ></div>
-      <el-color-picker v-model="headerColor" @active-change="activeChangeColor('header', $event)" />
+      <el-color-picker v-model="headerBgColor" @active-change="activeChangeColor('header', $event)" />
     </div>
     <el-divider>侧边栏主题</el-divider>
     <div class="flex justify-between">
       <div
         class="color-item"
-        v-for="(item, index) in sidebarColorList"
+        v-for="(item, index) in sidebarBgColorList"
         :key="index"
-        :class="{ active: item === sidebarColor }"
+        :class="{ active: item === sidebarBgColor }"
         :style="{ backgroundColor: item }"
         @click="activeChangeColor('sidebar', item)"
       ></div>
       <el-color-picker
-        v-model="sidebarColor"
+        v-model="sidebarBgColor"
         @active-change="activeChangeColor('sidebar', $event)"
       />
     </div>
@@ -100,7 +100,7 @@ import { defineComponent, ref, computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
 import { hexToRgb, colorGrayLevel } from '../utils/colorTransform'
-import { uniqStringByReg } from '../utils/common'
+import { uniqStringByReg, initDarkTheme } from '../utils/common'
 
 export default defineComponent({
   props: {
@@ -119,20 +119,24 @@ export default defineComponent({
       get: () => store.state.isDrawerShow,
       set: (val) => store.dispatch('changeDrawerShow', val)
     })
+    const currentTheme = computed(() => store.state.theme)
+    if (currentTheme.value === 'dark') {
+      theme.value = false
+      initDarkTheme()
+    }
     const systemColor = computed({
       get: () => store.state.systemColor,
       set: (val) => store.dispatch('changeSystemColor', val)
     })
-    const headerColor = computed({
+    const headerBgColor = computed({
       get: () => store.state.headerBgColor,
       set: (val) => store.dispatch('changeHeaderBgColor', val)
     })
-    const sidebarColor = computed({
+    const sidebarBgColor = computed({
       get: () => store.state.sidebarBgColor,
       set: (val) => store.dispatch('changeSidebarBgColor', val)
     })
     const customConfig = reactive({
-      theme: '',
       systemColorList: [
         '#0960BD',
         '#0084F4',
@@ -144,7 +148,7 @@ export default defineComponent({
         '#9C27B0',
         '#FF9800'
       ],
-      headerColorList: [
+      headerBgColorList: [
         '#0960BD',
         '#009688',
         '#5172DC',
@@ -155,7 +159,7 @@ export default defineComponent({
         '#001529',
         '#383F45'
       ],
-      sidebarColorList: [
+      sidebarBgColorList: [
         '#0960BD',
         '#212121',
         '#273352',
@@ -232,6 +236,10 @@ export default defineComponent({
     }
     const changeSidebarPosition = (position) => {
       store.dispatch('changeSidebarPosition', position)
+      if (currentTheme.value === 'dark') {
+        theme.value = false
+        initDarkTheme()
+      }
     }
     const themeChange = (val) => {
       let themeClass = document.querySelector('html').getAttribute('class') || ''
@@ -244,17 +252,10 @@ export default defineComponent({
         // 添加 class:dark
         themeClass = 'dark'
         store.dispatch('changeTheme', 'dark')
+        store.dispatch('changeSidebarBgColor', '#000')
+        store.dispatch('changeHeaderBgColor', '#000')
         // 切换暗模式，强制重置头部和侧边背景色以及文字颜色
-        let rootStyle = document.querySelector(':root').getAttribute('style')
-        rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
-        rootStyle += `--headerBgColor:#000;`
-        rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
-        rootStyle += `--sidebarBgColor:#000;`
-        rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
-        rootStyle += `--sidebarTextColor:#fff;`
-        rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
-        rootStyle += `--headerTextColor:#fff;`
-        document.querySelector(':root').setAttribute('style', rootStyle)
+        initDarkTheme()
       }
       document.querySelector('html').setAttribute('class', themeClass)
     }
@@ -262,8 +263,8 @@ export default defineComponent({
       theme,
       getDrawerShow,
       systemColor,
-      headerColor,
-      sidebarColor,
+      headerBgColor,
+      sidebarBgColor,
       ...toRefs(customConfig),
       sidebarPosition,
       closeDrawer,

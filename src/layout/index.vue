@@ -39,7 +39,7 @@ import { useStore } from 'vuex'
 import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
 import Tags from './Tags.vue'
-import { uniqStringByReg } from '../utils/common'
+import { uniqStringByReg, initDarkTheme } from '../utils/common'
 
 export default defineComponent({
   components: { Sidebar, Header, Tags },
@@ -71,16 +71,7 @@ export default defineComponent({
     document.querySelector(':root').setAttribute('style', rootStyle)
 
     if (theme.value === 'dark') {
-      let rootStyle = document.querySelector(':root').getAttribute('style')
-      rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
-      rootStyle += `--headerBgColor:#000;`
-      rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
-      rootStyle += `--sidebarBgColor:#000;`
-      rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
-      rootStyle += `--sidebarTextColor:#fff;`
-      rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
-      rootStyle += `--headerTextColor:#fff;`
-      document.querySelector(':root').setAttribute('style', rootStyle)
+      initDarkTheme()
       document.querySelector('html').setAttribute('class', theme.value)
     }
 
@@ -98,5 +89,8 @@ export default defineComponent({
   ::v-deep .el-menu {
     border: none;
   }
+}
+[mode="horizontal"] {
+  flex: auto;
 }
 </style>

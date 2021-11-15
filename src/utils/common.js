@@ -27,3 +27,16 @@ export const uniqStringByReg = (str, checkStr) => {
   const res = str.replace(reg, '')
   return res
 }
+
+export const initDarkTheme = () => {
+  let rootStyle = document.querySelector(':root').getAttribute('style')
+  rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
+  rootStyle += `--headerBgColor:#000;`
+  rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
+  rootStyle += `--sidebarBgColor:#000;`
+  rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
+  rootStyle += `--sidebarTextColor:#fff;`
+  rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
+  rootStyle += `--headerTextColor:#fff;`
+  document.querySelector(':root').setAttribute('style', rootStyle)
+}
