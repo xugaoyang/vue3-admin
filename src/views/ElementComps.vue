@@ -105,6 +105,15 @@
           <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
+      <div class="flex pb-10">
+        <el-tooltip content="Top center" placement="top">
+          <el-button>Dark</el-button>
+        </el-tooltip>
+        <el-tooltip content="Bottom center" placement="bottom" effect="light">
+          <el-button>Light</el-button>
+        </el-tooltip>
+      </div>
+      
     </el-card>
   </div>
 </template>
