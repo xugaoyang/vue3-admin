@@ -19,6 +19,18 @@ vue3 + element-plus.自研用.
 - [x] 主题在线配置
 
 
+#### 提示
+
+1. 使用依赖`commitlint-config-gitmoji`提交代码需要将[gitmoji.json](https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json)添加至`node_modules/commitlint-plugin-gitmoji/lib` folder
+
+```
+# if you meet the below error. It means that you failed to fetch the gitmojis.json file.
+Failed to fetch gitmoji JSON, please refer to https://github.com/arvinxx/gitmoji-commit-workflow/tree/master/packages/plugin#fetch-error for help.
+
+```
+
+
+
 参考框架：
 
 1. [vue-admin-beautiful-pro
