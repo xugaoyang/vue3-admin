@@ -9,9 +9,6 @@ import './assets/theme/custom.scss'
 import { Setting, Sunny, Moon } from '@element-plus/icons'
 import App from './App.vue'
 
-
-
-
 const app = createApp(App)
 app.component('setting', Setting)
 app.component('sunny', Sunny)

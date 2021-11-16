@@ -9,7 +9,7 @@ export const uniqString = (str, checkStr, splitSymbol) => {
   str = isLastSysmbol ? str.slice(0, str.length - 1) : str
   const arr = str.split(splitSymbol)
   arr.forEach((item, index) => {
-    if(item.includes(checkStr)) {
+    if (item.includes(checkStr)) {
       arr.splice(index, 1)
     }
   })
