@@ -7,10 +7,8 @@
 <script>
 export default {
   name: 'App',
-  components: {
-  }
+  components: {},
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
