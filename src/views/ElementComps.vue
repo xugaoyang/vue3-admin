@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card class="h-full" :body-style="{ padding: 10, height: '100%',overflowY: 'auto' }">
+    <el-card class="h-full" :body-style="{ padding: 10, height: '100%', overflowY: 'auto' }">
       <div class="flex pb-10">
         <span>级联选择器：</span>
         <el-cascader v-model="value" :options="options" @change="handleChange"></el-cascader>
@@ -43,7 +43,7 @@
           :button-texts="['To left', 'To right']"
           :format="{
             noChecked: '${total}',
-            hasChecked: '${checked}/${total}'
+            hasChecked: '${checked}/${total}',
           }"
           :data="transferData"
           @change="transferHandleChange"
@@ -113,7 +113,6 @@
           <el-button>Light</el-button>
         </el-tooltip>
       </div>
-      
     </el-card>
   </div>
 </template>
@@ -127,7 +126,7 @@ const generateData = () => {
     data.push({
       key: i,
       label: `Option ${i}`,
-      disabled: i % 4 === 0
+      disabled: i % 4 === 0,
     })
   }
   return data
@@ -147,13 +146,13 @@ export default defineComponent({
               children: [
                 {
                   value: 'consistency',
-                  label: 'Consistency'
+                  label: 'Consistency',
                 },
                 {
                   value: 'feedback',
-                  label: 'Feedback'
-                }
-              ]
+                  label: 'Feedback',
+                },
+              ],
             },
             {
               value: 'navigation',
@@ -161,15 +160,15 @@ export default defineComponent({
               children: [
                 {
                   value: 'side nav',
-                  label: 'Side Navigation'
+                  label: 'Side Navigation',
                 },
                 {
                   value: 'top nav',
-                  label: 'Top Navigation'
-                }
-              ]
-            }
-          ]
+                  label: 'Top Navigation',
+                },
+              ],
+            },
+          ],
         },
         {
           value: 'resource',
@@ -177,41 +176,41 @@ export default defineComponent({
           children: [
             {
               value: 'axure',
-              label: 'Axure Components'
+              label: 'Axure Components',
             },
             {
               value: 'sketch',
-              label: 'Sketch Templates'
+              label: 'Sketch Templates',
             },
             {
               value: 'docs',
-              label: 'Design Documentation'
-            }
-          ]
-        }
+              label: 'Design Documentation',
+            },
+          ],
+        },
       ],
       date: '',
       selectOptions: [
         {
           value: 'Option1',
-          label: 'Option1'
+          label: 'Option1',
         },
         {
           value: 'Option2',
-          label: 'Option2'
+          label: 'Option2',
         },
         {
           value: 'Option3',
-          label: 'Option3'
+          label: 'Option3',
         },
         {
           value: 'Option4',
-          label: 'Option4'
+          label: 'Option4',
         },
         {
           value: 'Option5',
-          label: 'Option5'
-        }
+          label: 'Option5',
+        },
       ],
       transferData: generateData(),
       leftValue: [1],
@@ -230,15 +229,15 @@ export default defineComponent({
               children: [
                 {
                   id: 9,
-                  label: 'Level three 1-1-1'
+                  label: 'Level three 1-1-1',
                 },
                 {
                   id: 10,
-                  label: 'Level three 1-1-2'
-                }
-              ]
-            }
-          ]
+                  label: 'Level three 1-1-2',
+                },
+              ],
+            },
+          ],
         },
         {
           id: 2,
@@ -246,13 +245,13 @@ export default defineComponent({
           children: [
             {
               id: 5,
-              label: 'Level two 2-1'
+              label: 'Level two 2-1',
             },
             {
               id: 6,
-              label: 'Level two 2-2'
-            }
-          ]
+              label: 'Level two 2-2',
+            },
+          ],
         },
         {
           id: 3,
@@ -260,38 +259,38 @@ export default defineComponent({
           children: [
             {
               id: 7,
-              label: 'Level two 3-1'
+              label: 'Level two 3-1',
             },
             {
               id: 8,
-              label: 'Level two 3-2'
-            }
-          ]
-        }
+              label: 'Level two 3-2',
+            },
+          ],
+        },
       ],
       defaultProps: {
         children: 'children',
-        label: 'label'
+        label: 'label',
       },
       activeName: 'first',
       tableData: [
         {
           date: '2016-05-02',
           name: 'John Smith',
-          address: 'No.1518,  Jinshajiang Road, Putuo District'
+          address: 'No.1518,  Jinshajiang Road, Putuo District',
         },
         {
           date: '2016-05-04',
           name: 'John Smith',
-          address: 'No.1518,  Jinshajiang Road, Putuo District'
+          address: 'No.1518,  Jinshajiang Road, Putuo District',
         },
         {
           date: '2016-05-01',
           name: 'John Smith',
-          address: 'No.1518,  Jinshajiang Road, Putuo District'
-        }
+          address: 'No.1518,  Jinshajiang Road, Putuo District',
+        },
       ],
-      loading: true
+      loading: true,
     })
     const checkList = ref(['selected and disabled', 'Option A'])
     const handleChange = (value) => {
@@ -308,9 +307,9 @@ export default defineComponent({
       ...toRefs(state),
       handleChange,
       transferHandleChange,
-      tabClick
+      tabClick,
     }
-  }
+  },
 })
 </script>
 

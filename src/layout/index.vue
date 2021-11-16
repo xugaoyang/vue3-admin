@@ -78,9 +78,9 @@ export default defineComponent({
     return {
       contentHeight,
       getSidebarPosition,
-      sidebarWidth
+      sidebarWidth,
     }
-  }
+  },
 })
 </script>
 
@@ -90,7 +90,7 @@ export default defineComponent({
     border: none;
   }
 }
-[mode="horizontal"] {
+[mode='horizontal'] {
   flex: auto;
 }
 </style>

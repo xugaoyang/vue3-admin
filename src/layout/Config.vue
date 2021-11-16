@@ -68,7 +68,10 @@
         :style="{ backgroundColor: item }"
         @click="activeChangeColor('header', item)"
       ></div>
-      <el-color-picker v-model="headerBgColor" @active-change="activeChangeColor('header', $event)" />
+      <el-color-picker
+        v-model="headerBgColor"
+        @active-change="activeChangeColor('header', $event)"
+      />
     </div>
     <el-divider>侧边栏主题</el-divider>
     <div class="flex justify-between">
@@ -104,12 +107,12 @@ import { uniqStringByReg, initDarkTheme } from '../utils/common'
 
 export default defineComponent({
   props: {
-    direction: String
+    direction: String,
   },
   data() {
     return {
       active: Sunny,
-      inactive: Moon
+      inactive: Moon,
     }
   },
   setup() {
@@ -117,7 +120,7 @@ export default defineComponent({
     const theme = ref(true)
     const getDrawerShow = computed({
       get: () => store.state.isDrawerShow,
-      set: (val) => store.dispatch('changeDrawerShow', val)
+      set: (val) => store.dispatch('changeDrawerShow', val),
     })
     const currentTheme = computed(() => store.state.theme)
     if (currentTheme.value === 'dark') {
@@ -126,15 +129,15 @@ export default defineComponent({
     }
     const systemColor = computed({
       get: () => store.state.systemColor,
-      set: (val) => store.dispatch('changeSystemColor', val)
+      set: (val) => store.dispatch('changeSystemColor', val),
     })
     const headerBgColor = computed({
       get: () => store.state.headerBgColor,
-      set: (val) => store.dispatch('changeHeaderBgColor', val)
+      set: (val) => store.dispatch('changeHeaderBgColor', val),
     })
     const sidebarBgColor = computed({
       get: () => store.state.sidebarBgColor,
-      set: (val) => store.dispatch('changeSidebarBgColor', val)
+      set: (val) => store.dispatch('changeSidebarBgColor', val),
     })
     const customConfig = reactive({
       systemColorList: [
@@ -146,7 +149,7 @@ export default defineComponent({
         '#EE4F12',
         '#0096C7',
         '#9C27B0',
-        '#FF9800'
+        '#FF9800',
       ],
       headerBgColorList: [
         '#0960BD',
@@ -157,7 +160,7 @@ export default defineComponent({
         '#24292E',
         '#394664',
         '#001529',
-        '#383F45'
+        '#383F45',
       ],
       sidebarBgColorList: [
         '#0960BD',
@@ -168,8 +171,8 @@ export default defineComponent({
         '#304156',
         '#28333E',
         '#344058',
-        '#383F45'
-      ]
+        '#383F45',
+      ],
     })
     const closeDrawer = () => {
       store.dispatch('changeDrawerShow', false)
@@ -181,16 +184,16 @@ export default defineComponent({
       const actions = [
         {
           action: 'changeSidebarBgColor',
-          type: 'sidebar'
+          type: 'sidebar',
         },
         {
           action: 'changeSystemColor',
-          type: 'system'
+          type: 'system',
         },
         {
           action: 'changeHeaderBgColor',
-          type: 'header'
-        }
+          type: 'header',
+        },
       ]
 
       const currentAction = actions.find((action) => action.type === type)
@@ -270,9 +273,9 @@ export default defineComponent({
       closeDrawer,
       changeSidebarPosition,
       activeChangeColor,
-      themeChange
+      themeChange,
     }
-  }
+  },
 })
 </script>
 

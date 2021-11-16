@@ -1,6 +1,10 @@
 <template>
   <div class="p-5">
-    <el-icon class="cursor-pointer text-18px" v-if="isMenuCollapse" @click="changeCollapseStatus(false)">
+    <el-icon
+      class="cursor-pointer text-18px"
+      v-if="isMenuCollapse"
+      @click="changeCollapseStatus(false)"
+    >
       <expand />
     </el-icon>
     <el-icon class="cursor-pointer text-18px" v-else @click="changeCollapseStatus(true)">
@@ -17,7 +21,7 @@ import { Expand, Fold } from '@element-plus/icons'
 export default defineComponent({
   components: {
     Expand,
-    Fold
+    Fold,
   },
   setup() {
     let store = useStore()
@@ -29,12 +33,10 @@ export default defineComponent({
     }
     return {
       changeCollapseStatus,
-      isMenuCollapse
+      isMenuCollapse,
     }
   },
 })
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

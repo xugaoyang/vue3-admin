@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '../layout/index.vue'
 
 const routes = [
-  
   {
     path: '/',
     // route level code-splitting
@@ -13,25 +12,26 @@ const routes = [
       {
         path: 'table',
         name: 'table',
-        component: () => import(/* webpackChunkName: 'table' */ '../views/Table.vue')
+        component: () => import(/* webpackChunkName: 'table' */ '../views/Table.vue'),
       },
       {
         path: 'helloworld',
         name: 'helloworld',
-        component: () => import(/* webpackChunkName: 'helloworld' */ '../views/HelloWorld.vue')
+        component: () => import(/* webpackChunkName: 'helloworld' */ '../views/HelloWorld.vue'),
       },
       {
         path: 'elementComponents',
         name: 'elementComponents',
-        component: () => import(/* webpackChunkName: 'elementComponents' */ '../views/ElementComps.vue')
-      }
-    ]
-  }
+        component: () =>
+          import(/* webpackChunkName: 'elementComponents' */ '../views/ElementComps.vue'),
+      },
+    ],
+  },
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
 })
 
 export default router

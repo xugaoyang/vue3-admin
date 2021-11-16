@@ -79,7 +79,7 @@ export default defineComponent({
     const item = {
       date: '2016-05-02',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles'
+      address: 'No. 189, Grove St, Los Angeles',
     }
     let dialogVisible = ref(false)
     const data = reactive({
@@ -91,8 +91,8 @@ export default defineComponent({
         delivery: false,
         type: [],
         resource: '',
-        desc: ''
-      }
+        desc: '',
+      },
     })
     const tableData = ref(Array(20).fill(item))
     const openDialog = (type) => {
@@ -116,9 +116,9 @@ export default defineComponent({
       dialogVisible,
       tableData,
       openDialog,
-      onSubmit
+      onSubmit,
     }
-  }
+  },
 })
 </script>
 

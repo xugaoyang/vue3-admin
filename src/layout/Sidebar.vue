@@ -18,7 +18,7 @@ import SidebarItem from './components/SidebarItem.vue'
 
 export default defineComponent({
   components: {
-    SidebarItem
+    SidebarItem,
   },
   setup() {
     let menuMode = ref('vertical')
@@ -29,7 +29,7 @@ export default defineComponent({
           id: '1',
           icon: 'el-icon-house',
           path: '/home',
-          children: []
+          children: [],
         },
         {
           name: '导航一',
@@ -42,16 +42,16 @@ export default defineComponent({
               id: '2-1',
               icon: 'el-icon-baseball',
               path: '/tool/page1',
-              children: []
+              children: [],
             },
             {
               name: '导航一-2',
               id: '2-2',
               icon: 'el-icon-basketball',
               path: '/tool/page2',
-              children: []
-            }
-          ]
+              children: [],
+            },
+          ],
         },
         {
           name: '导航三',
@@ -64,25 +64,25 @@ export default defineComponent({
               id: '3-1',
               icon: 'el-icon-cherry',
               path: '/food/fries',
-              children: []
+              children: [],
             },
             {
               name: '导航三-2',
               id: '3-2',
               icon: 'el-icon-coffee',
               path: '/food/coffee',
-              children: []
-            }
-          ]
+              children: [],
+            },
+          ],
         },
         {
           name: '导航四',
           id: '4',
           icon: 'el-icon-coin',
           path: '/tool',
-          children: []
-        }
-      ]
+          children: [],
+        },
+      ],
     })
     let store = useStore()
     const isMenuCollapse = computed(() => store.state.isMenuCollapse)
@@ -96,9 +96,9 @@ export default defineComponent({
     return {
       ...params,
       menuMode,
-      isMenuCollapse
+      isMenuCollapse,
     }
-  }
+  },
 })
 </script>
 

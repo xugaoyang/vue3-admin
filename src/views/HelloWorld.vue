@@ -48,9 +48,9 @@ export default defineComponent({
   setup() {
     const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
     return {
-      format
+      format,
     }
-  }
+  },
 })
 </script>
 

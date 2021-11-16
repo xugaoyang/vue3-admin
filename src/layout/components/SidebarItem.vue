@@ -18,14 +18,14 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   props: {
     item: Object,
-    collapse: Boolean
+    collapse: Boolean,
   },
   setup() {
     const handleMenu = () => {}
     return {
-      handleMenu
+      handleMenu,
     }
-  }
+  },
 })
 </script>
 

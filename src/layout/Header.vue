@@ -12,7 +12,6 @@
     </div>
     <Config :direction="direction"></Config>
   </div>
-  
 </template>
 
 <script>
@@ -38,7 +37,7 @@ export default defineComponent({
     return {
       direction,
       sidebarPosition,
-      openDrawer
+      openDrawer,
     }
   },
 })
