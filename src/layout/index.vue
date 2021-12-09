@@ -7,7 +7,7 @@
       <el-header class="p-0">
         <Header />
       </el-header>
-      <el-main clas="p-10">
+      <el-main class="pr-10 pl-10 pb-10 pt-0">
         <Tags />
         <router-view :style="{ height: contentHeight }" />
       </el-main>

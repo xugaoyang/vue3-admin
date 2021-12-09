@@ -11,4 +11,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style>
+#nprogress .bar {
+  height: 4px !important;
+  background: purple !important;
+}
+</style>

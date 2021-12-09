@@ -8,6 +8,8 @@ import {
   CHANGE_HEADER_COLOR,
   CHANGE_SYSTEM_COLOR,
   CHANGE_THEME,
+  CHANGE_TAG,
+  CHANGE_TAGS,
 } from './mutation-types'
 
 const store = createStore({
@@ -19,6 +21,8 @@ const store = createStore({
     sidebarBgColor: '#aaa',
     headerBgColor: '#fff',
     theme: 'light',
+    tags: [],
+    currentTag: {},
   },
   getters: {
     isMenuCollapse(state) {
@@ -41,6 +45,12 @@ const store = createStore({
     },
     theme(state) {
       return state.theme
+    },
+    tags(state) {
+      return state.tags
+    },
+    currentTag(state) {
+      return state.currentTag
     },
   },
   mutations: {
@@ -65,6 +75,12 @@ const store = createStore({
     [CHANGE_THEME](state, payload) {
       state.theme = payload
     },
+    [CHANGE_TAG](state, payload) {
+      state.currentTag = payload
+    },
+    [CHANGE_TAGS](state, payload) {
+      state.tags = payload
+    },
   },
   actions: {
     changeMenuCollapse({ commit }, payload) {
@@ -87,6 +103,12 @@ const store = createStore({
     },
     changeTheme({ commit }, payload) {
       commit('CHANGE_THEME', payload)
+    },
+    changeTag({ commit }, payload) {
+      commit('CHANGE_TAG', payload)
+    },
+    changeTags({ commit }, payload) {
+      commit('CHANGE_TAGS', payload)
     },
   },
   plugins: [createPersistedState()],

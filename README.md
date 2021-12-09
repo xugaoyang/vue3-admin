@@ -14,7 +14,13 @@ vue3 + element-plus.自研用.
 
 #### 功能
 
-- [x] 主题在线配置
+- [x] 在线配置
+- [x] tags
+- [ ] with ts
+- [ ] axios封装
+- [ ] mock
+- [ ] login
+- [ ] vite
 
 
 #### 提示

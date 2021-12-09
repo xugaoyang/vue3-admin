@@ -25,30 +25,30 @@ export default defineComponent({
     const data = reactive({
       menuList: [
         {
-          name: '首页',
+          name: 'AllComponents',
           id: '1',
           icon: 'el-icon-house',
-          path: '/home',
+          path: '/elementComponents',
           children: [],
         },
         {
-          name: '导航一',
+          name: 'Components',
           id: '2',
           icon: 'el-icon-apple',
           path: '/tool',
           children: [
             {
-              name: '导航一-1',
+              name: 'info',
               id: '2-1',
               icon: 'el-icon-baseball',
-              path: '/tool/page1',
+              path: '/info',
               children: [],
             },
             {
-              name: '导航一-2',
+              name: 'table',
               id: '2-2',
               icon: 'el-icon-basketball',
-              path: '/tool/page2',
+              path: '/table',
               children: [],
             },
           ],
