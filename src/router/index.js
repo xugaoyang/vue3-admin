@@ -38,6 +38,22 @@ const routes = [
           title: 'elementComponents',
         },
       },
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/Login.vue'),
+        meta: {
+          title: 'login',
+        },
+      },
+      {
+        path: 'tree',
+        name: 'tree',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/Tree.vue'),
+        meta: {
+          title: 'tree',
+        },
+      },
     ],
   },
 ]
@@ -58,21 +74,23 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to) => {
   NProgress.done()
   console.log(to)
-  const tag = {
-    title: to.meta.title,
-    name: to.name,
-    path: to.path,
-    fullPath: to.fullPath,
-    meta: to.meta,
-    params: to.params,
-    query: to.query,
+  if (to.path !== '/login') {
+    const tag = {
+      title: to.meta.title,
+      name: to.name,
+      path: to.path,
+      fullPath: to.fullPath,
+      meta: to.meta,
+      params: to.params,
+      query: to.query,
+    }
+    const tags = store.state.tags
+    const isTagInTags = tags.find((val) => tag.title === val.title)
+    if (!isTagInTags) {
+      store.dispatch('changeTags', [...tags, tag])
+    }
+    store.dispatch('changeTag', tag)
   }
-  const tags = store.state.tags
-  const isTagInTags = tags.find((val) => tag.title === val.title)
-  if (!isTagInTags) {
-    store.dispatch('changeTags', [...tags, tag])
-  }
-  store.dispatch('changeTag', tag)
 })
 
 export default router

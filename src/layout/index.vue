@@ -1,5 +1,6 @@
 <template>
-  <el-container class="layout h-full w-full" v-if="getSidebarPosition === 'left'">
+  <div class="h-full w-full" v-if="isLogin"><router-view></router-view></div>
+  <el-container class="layout h-full w-full" v-else-if="getSidebarPosition === 'left'">
     <el-aside :width="sidebarWidth">
       <Sidebar />
     </el-aside>
@@ -26,16 +27,12 @@
       <router-view :style="{ height: contentHeight }" />
     </el-main>
   </el-container>
-  <el-container class="layout h-full w-full" v-else>
-    <el-main>
-      <router-view />
-    </el-main>
-  </el-container>
 </template>
 
 <script>
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
 import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
 import Tags from './Tags.vue'
@@ -45,6 +42,8 @@ export default defineComponent({
   components: { Sidebar, Header, Tags },
   setup() {
     const store = useStore()
+    const route = useRoute()
+    console.log(route.path)
     const getSidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
@@ -54,6 +53,7 @@ export default defineComponent({
     const contentHeight = computed(() => {
       return 'calc(100% - 50px)'
     })
+    const isLogin = computed(() => ['/login', '/tree'].includes(route.path))
     const theme = computed(() => store.state.theme)
     const systemColor = computed(() => store.state.systemColor)
     const headerBgColor = computed(() => store.state.headerBgColor)
@@ -76,6 +76,7 @@ export default defineComponent({
     }
 
     return {
+      isLogin,
       contentHeight,
       getSidebarPosition,
       sidebarWidth,

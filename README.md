@@ -22,6 +22,10 @@ vue3 + element-plus.自研用.
 - [ ] login
 - [ ] vite
 
+#### 优化
+
+- [ ] 骨架屏
+
 
 #### 提示
 
@@ -37,8 +41,7 @@ Failed to fetch gitmoji JSON, please refer to https://github.com/arvinxx/gitmoji
 
 参考框架：
 
-1. [vue-admin-beautiful-pro
-](https://chu1204505056.gitee.io/admin-pro/#/index)
+1. [vue-admin-beautiful-pro](https://chu1204505056.gitee.io/admin-pro/#/index)
 2. [iview](https://adminpro.iviewui.com)
 3. [vbenAdmin](https://vvbin.cn/next/#/dashboard/analysis)
 4. [MDN--var](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())
