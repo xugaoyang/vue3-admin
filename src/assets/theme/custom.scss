@@ -12,7 +12,7 @@
   --el-text-color-primary: var(--textColor);
   --el-input-background-color: var(--contentBgColor);
   --el-text-color-placeholder: #c0c4cc;
-  --el-border-color-base: #dcdfe6;
+  --el-border-color-base: var(--borderColor);
   --el-background-color-base: #f5f7fa;
   --el-font-color-disabled-base: #bbb;
 }
