@@ -26,6 +26,15 @@ setup() {
 
 ```
 
+#### 代码提交约束
+
+1. 提交格式
+```
+<gitmoji> <commit type>: <description>
+
+// eg
+:sparkles: feat: add theme change
+```
 
 #### 功能
 
