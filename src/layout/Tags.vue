@@ -14,10 +14,8 @@
       </el-tooltip>
     </el-scrollbar>
     <div class="tag-close-menu mr-5 ml-5 text-center">
-      <el-dropdown size="mini" trigger="hover" placement="bottom" @command="closeTagCommand">
-        <el-icon class="cursor-pointer">
-          <close />
-        </el-icon>
+      <el-dropdown size="mini" trigger="hover" placement="bottom-end" @command="closeTagCommand">
+        <el-icon class="icon-close cursor-pointer"> <close /> </el-icon>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item v-for="item in closeMenu" :key="item.value" :command="item.value">{{
@@ -125,10 +123,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/theme/theme.scss';
 #pageTags {
   position: relative;
   .tag-scroll {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $borderColor;
   }
   .tag-close-menu {
     position: absolute !important;
@@ -140,8 +139,10 @@ export default defineComponent({
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
-    border-color: #ddd;
-    color: #ddd;
+    border-color: $borderColor;
+    color: $borderColor;
+  }
+  .icon-close {
   }
 }
 </style>

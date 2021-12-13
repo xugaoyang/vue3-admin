@@ -11,6 +11,21 @@ vue3 + element-plus.自研用.
     5. toRef 用于创建对象指定的属性响应式，换句话说就是只能控制一个对象中的一个属性,toRefs 用于创建对象响应式
     6. 只有toRefs 返回的对象能够解构
 
+2. 如何在setup函数内通过ref获取表单dom元素
+```
+// 注意loginForm同步
+<el-form ref="loginForm" :model="form" :rules="formRules"></el-form>
+setup() {
+    const loginForm = ref()
+    const formDom = unref(loginForm)
+    formDom.validate(() => {})
+    return {
+        loginForm
+    }
+}
+
+```
+
 
 #### 功能
 
@@ -21,6 +36,10 @@ vue3 + element-plus.自研用.
 - [ ] mock
 - [ ] login
 - [ ] vite
+
+#### 优化
+
+- [ ] 骨架屏
 
 
 #### 提示
@@ -37,9 +56,9 @@ Failed to fetch gitmoji JSON, please refer to https://github.com/arvinxx/gitmoji
 
 参考框架：
 
-1. [vue-admin-beautiful-pro
-](https://chu1204505056.gitee.io/admin-pro/#/index)
+1. [vue-admin-beautiful-pro](https://chu1204505056.gitee.io/admin-pro/#/index)
 2. [iview](https://adminpro.iviewui.com)
 3. [vbenAdmin](https://vvbin.cn/next/#/dashboard/analysis)
 4. [MDN--var](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())
 5. [css变量教程](https://www.ruanyifeng.com/blog/2017/05/css-variables.html)
+6. [threejs example](https://threejs.org/examples/webgl_points_dynamic.html)
