@@ -11,6 +11,19 @@ vue3 + element-plus.自研用.
     5. toRef 用于创建对象指定的属性响应式，换句话说就是只能控制一个对象中的一个属性,toRefs 用于创建对象响应式
     6. 只有toRefs 返回的对象能够解构
 
+2. 如何在setup函数内通过ref获取表单dom元素
+```
+setup() {
+    const form = ref()
+    const formDom = unref(form)
+    formDom.validate(() => {})
+    return {
+        form
+    }
+}
+
+```
+
 
 #### 功能
 
