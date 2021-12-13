@@ -1,7 +1,7 @@
 <template>
   <div class="login-page w-full h-full">
     <div class="login-box">
-      <el-form class="login-form" ref="formDom" :model="form" :rules="formRules">
+      <el-form class="login-form" ref="loginForm" :model="form" :rules="formRules">
         <el-form-item prop="name">
           <el-input v-model="form.name" placeholder="input username">
             <template #prefix>
@@ -54,21 +54,21 @@ export default defineComponent({
         ],
       },
     })
-    const formDom = ref()
+    const loginForm = ref()
 
     onMounted(() => {
       init('.login-page')
       animate()
     })
     const login = () => {
-      unref(formDom).validate((valid) => {
+      unref(loginForm).validate((valid) => {
         if (valid) {
           console.log('submit')
         }
       })
     }
     return {
-      formDom,
+      loginForm,
       ...data,
       login,
     }

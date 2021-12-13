@@ -13,12 +13,14 @@ vue3 + element-plus.自研用.
 
 2. 如何在setup函数内通过ref获取表单dom元素
 ```
+// 注意loginForm同步
+<el-form ref="loginForm" :model="form" :rules="formRules"></el-form>
 setup() {
-    const form = ref()
-    const formDom = unref(form)
+    const loginForm = ref()
+    const formDom = unref(loginForm)
     formDom.validate(() => {})
     return {
-        form
+        loginForm
     }
 }
 
