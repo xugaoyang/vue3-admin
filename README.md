@@ -43,7 +43,7 @@ setup() {
 - [ ] with ts
 - [ ] axios封装
 - [ ] mock
-- [ ] i18n
+- [x] i18n
 - [x] login background with threejs
 - [ ] vite
 

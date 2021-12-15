@@ -11,6 +11,8 @@ import {
   CHANGE_TAG,
   CHANGE_TAGS,
   CHANGE_LANG,
+  CHANGE_USER,
+  CHANGE_TOKEN,
 } from './mutation-types'
 
 const store = createStore({
@@ -25,6 +27,8 @@ const store = createStore({
     tags: [],
     currentTag: {},
     lang: 'zh-cn',
+    user: {},
+    token: '',
   },
   getters: {
     isMenuCollapse(state) {
@@ -56,6 +60,12 @@ const store = createStore({
     },
     lang(state) {
       return state.lang
+    },
+    user(state) {
+      return state.user
+    },
+    token(state) {
+      return state.token
     },
   },
   mutations: {
@@ -89,6 +99,12 @@ const store = createStore({
     [CHANGE_LANG](state, payload) {
       state.lang = payload
     },
+    [CHANGE_USER](state, payload) {
+      state.user = payload
+    },
+    [CHANGE_TOKEN](state, payload) {
+      state.token = payload
+    },
   },
   actions: {
     changeMenuCollapse({ commit }, payload) {
@@ -120,6 +136,12 @@ const store = createStore({
     },
     changeLang({ commit }, payload) {
       commit('CHANGE_LANG', payload)
+    },
+    changeUser({ commit }, payload) {
+      commit('CHANGE_USER', payload)
+    },
+    changeToken({ commit }, payload) {
+      commit('CHANGE_TOKEN', payload)
     },
   },
   plugins: [createPersistedState()],
