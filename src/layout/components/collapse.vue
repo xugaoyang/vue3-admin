@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div class="p-5 flex items-center">
     <el-icon
       class="cursor-pointer text-18px"
       v-if="isMenuCollapse"

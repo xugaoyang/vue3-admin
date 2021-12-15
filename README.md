@@ -43,13 +43,9 @@ setup() {
 - [ ] with ts
 - [ ] axios封装
 - [ ] mock
-- [ ] login
+- [ ] i18n
+- [x] login background with threejs
 - [ ] vite
-
-#### 优化
-
-- [ ] 骨架屏
-
 
 #### 提示
 

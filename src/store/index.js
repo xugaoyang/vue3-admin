@@ -10,6 +10,7 @@ import {
   CHANGE_THEME,
   CHANGE_TAG,
   CHANGE_TAGS,
+  CHANGE_LANG,
 } from './mutation-types'
 
 const store = createStore({
@@ -23,6 +24,7 @@ const store = createStore({
     theme: 'light',
     tags: [],
     currentTag: {},
+    lang: 'zh-cn',
   },
   getters: {
     isMenuCollapse(state) {
@@ -51,6 +53,9 @@ const store = createStore({
     },
     currentTag(state) {
       return state.currentTag
+    },
+    lang(state) {
+      return state.lang
     },
   },
   mutations: {
@@ -81,6 +86,9 @@ const store = createStore({
     [CHANGE_TAGS](state, payload) {
       state.tags = payload
     },
+    [CHANGE_LANG](state, payload) {
+      state.lang = payload
+    },
   },
   actions: {
     changeMenuCollapse({ commit }, payload) {
@@ -109,6 +117,9 @@ const store = createStore({
     },
     changeTags({ commit }, payload) {
       commit('CHANGE_TAGS', payload)
+    },
+    changeLang({ commit }, payload) {
+      commit('CHANGE_LANG', payload)
     },
   },
   plugins: [createPersistedState()],

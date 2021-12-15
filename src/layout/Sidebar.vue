@@ -51,6 +51,13 @@ export default defineComponent({
               path: '/table',
               children: [],
             },
+            {
+              name: 'i18n',
+              id: '2-3',
+              icon: 'el-icon-cherry',
+              path: '/i18n',
+              children: [],
+            },
           ],
         },
         {

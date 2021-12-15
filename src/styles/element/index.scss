@@ -1,3 +1,4 @@
+// Font Icon has been removed, since version 1.2.0-beta.1
 @forward "element-plus/theme-chalk/src/common/var.scss"with ($font-path: '~element-plus/dist/fonts',
   $colors: (
     'white': #ffffff,
@@ -23,5 +24,5 @@
   ),
 );
 
-@use "element-plus/theme-chalk/src/index.scss";
+@use "~element-plus/theme-chalk/src/index.scss";
 
