@@ -26,6 +26,15 @@ setup() {
 
 ```
 
+#### 代码提交约束
+
+1. 提交格式
+```
+<gitmoji> <commit type>: <description>
+
+// eg
+:sparkles: feat: add theme change
+```
 
 #### 功能
 
@@ -34,13 +43,9 @@ setup() {
 - [ ] with ts
 - [ ] axios封装
 - [ ] mock
-- [ ] login
+- [x] i18n
+- [x] login background with threejs
 - [ ] vite
-
-#### 优化
-
-- [ ] 骨架屏
-
 
 #### 提示
 

@@ -5,6 +5,7 @@
     </div>
     <slot name="sidebar"></slot>
     <div class="header-r flex items-center">
+      <lang></lang>
       <span class="pr-10 pl-10 cursor-pointer">vue3</span>
       <el-icon class="mr-10 ml-10 cursor-pointer" :size="20" color="#000" @click="openDrawer">
         <setting />
@@ -19,11 +20,13 @@ import { defineComponent, ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import Config from './Config.vue'
 import Collapse from './components/Collapse.vue'
+import Lang from './components/Lang.vue'
 
 export default defineComponent({
   components: {
     Config,
     Collapse,
+    Lang,
   },
   setup() {
     const direction = ref('rtl')
@@ -48,6 +51,6 @@ export default defineComponent({
   width: 200px;
 }
 .header-r {
-  width: 100px;
+  // width: 150px;
 }
 </style>

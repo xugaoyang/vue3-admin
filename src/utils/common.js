@@ -40,3 +40,12 @@ export const initDarkTheme = () => {
   rootStyle += `--headerTextColor:#fff;`
   document.querySelector(':root').setAttribute('style', rootStyle)
 }
+
+export const initLightTheme = () => {
+  let rootStyle = document.querySelector(':root').getAttribute('style')
+  rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
+  rootStyle += `--sidebarTextColor:#fff;`
+  rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
+  rootStyle += `--headerTextColor:#fff;`
+  document.querySelector(':root').setAttribute('style', rootStyle)
+}

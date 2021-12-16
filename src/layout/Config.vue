@@ -103,7 +103,7 @@ import { defineComponent, ref, computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
 import { hexToRgb, colorGrayLevel } from '../utils/colorTransform'
-import { uniqStringByReg, initDarkTheme } from '../utils/common'
+import { uniqStringByReg, initDarkTheme, initLightTheme } from '../utils/common'
 
 export default defineComponent({
   props: {
@@ -126,6 +126,9 @@ export default defineComponent({
     if (currentTheme.value === 'dark') {
       theme.value = false
       initDarkTheme()
+    } else {
+      theme.value = true
+      initLightTheme()
     }
     const systemColor = computed({
       get: () => store.state.systemColor,
@@ -251,6 +254,7 @@ export default defineComponent({
         // 移除 class:dark-theme
         themeClass = ''
         store.dispatch('changeTheme', 'light')
+        initLightTheme()
       } else {
         // 添加 class:dark
         themeClass = 'dark'

@@ -54,6 +54,14 @@ const routes = [
           title: 'tree',
         },
       },
+      {
+        path: 'i18n',
+        name: 'i18n',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/I18n.vue'),
+        meta: {
+          title: 'i18n',
+        },
+      },
     ],
   },
 ]
