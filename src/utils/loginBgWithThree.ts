@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as THREE from 'three'
 // import Stats from 'three/examples/jsm/libs/stats.module.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
@@ -8,12 +9,12 @@ import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js'
 import { FocusShader } from 'three/examples/jsm/shaders/FocusShader.js'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 
-let camera, scene, renderer, mesh, parent, composer, effectFocus
-const meshes = []
-const clonemeshes = []
+let camera: any, scene: any, renderer: any, mesh: any, parent: any, composer: any, effectFocus: any
+const meshes: [] = []
+const clonemeshes: [] = []
 const clock = new THREE.Clock()
 
-const init = function (cssSelector) {
+const init = function (cssSelector: string) {
   const container = document.querySelector(cssSelector)
 
   camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 50000)

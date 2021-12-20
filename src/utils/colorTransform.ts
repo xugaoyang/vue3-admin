@@ -1,4 +1,4 @@
-export const hexToRgb = (color) => {
+export const hexToRgb = (color: string) => {
   const reg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/
   color = color.toLowerCase()
   if (reg.test(color)) {
@@ -19,11 +19,11 @@ export const hexToRgb = (color) => {
   }
 }
 
-export const rgbToHex = (color) => {
+export const rgbToHex = (color: string) => {
   const reg = /^(rgb|RGB)/
   if (reg.test(color)) {
     let strHex = '#'
-    let colorArr = color.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(',')
+    const colorArr = color.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(',')
     for (let i = 0; i < colorArr.length; i++) {
       let hex = Number(colorArr[i]).toString(16)
       if (hex === '0') {
@@ -42,9 +42,9 @@ export const rgbToHex = (color) => {
  * @param {String} color rgb格式
  * @param {Number} threshold 灰度阈值
  */
-export const colorGrayLevel = (color, threshold) => {
+export const colorGrayLevel = (color: string, threshold: number) => {
   // 判断颜色的灰度值，值越小颜色越深 g = R*0.299 + G*0.587 + B*0.114
-  const colorArr = color.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(',')
+  const colorArr: any[] = color.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(',')
   const g = colorArr[0] * 0.299 + colorArr[1] * 0.587 + colorArr[2] * 0.114
 
   if (g > threshold) {

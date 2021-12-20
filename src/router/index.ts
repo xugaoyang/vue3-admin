@@ -93,7 +93,7 @@ router.afterEach((to) => {
       query: to.query,
     }
     const tags = store.state.tags
-    const isTagInTags = tags.find((val) => tag.title === val.title)
+    const isTagInTags = tags.find((val: { title: string }) => tag.title === val.title)
     if (!isTagInTags) {
       store.dispatch('changeTags', [...tags, tag])
     }

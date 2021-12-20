@@ -7,13 +7,6 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "lint-staged": {
-    "**/**.{ts,js,json,css,md}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "dependencies": {
     "@element-plus/icons": "0.0.11",
     "axios": "^0.24.0",
@@ -31,10 +24,16 @@
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
+    "@types/nprogress": "^0.2.0",
+    "@types/three": "^0.135.0",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
     "babel-eslint": "^10.1.0",
     "commitlint-config-gitmoji": "^2.2.5",
     "eslint": "^7.32.0",
@@ -45,7 +44,8 @@
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
     "sass": "^1.43.4",
-    "sass-loader": "^10.1.1"
+    "sass-loader": "^10.1.1",
+    "typescript": "~4.1.5"
   },
   "eslintConfig": {
     "root": true,
@@ -55,10 +55,11 @@
     "extends": [
       "plugin:vue/vue3-essential",
       "eslint:recommended",
-      "plugin:prettier/recommended"
+      "plugin:prettier/recommended",
+      "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@typescript-eslint/parser"
     },
     "rules": {
       "vue/no-v-model-argument": "off"
@@ -68,5 +69,12 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "lint-staged": {
+    "**/**.{ts,js,json,css,md}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
 }
