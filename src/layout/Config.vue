@@ -357,20 +357,20 @@ export default defineComponent({
     }
   }
 }
-::v-deep .el-icon-moon,
-::v-deep .el-icon-sunny {
+:deep .el-icon-moon,
+:deep .el-icon-sunny {
   font-size: 16px;
 }
-::v-deep .el-color-picker__trigger {
+:deep .el-color-picker__trigger {
   padding: 0px;
   width: 24px !important;
   height: 24px !important;
   border: none !important;
 }
-::v-deep .el-divider__text {
+:deep .el-divider__text {
   color: #000;
 }
-::v-deep .el-switch__label {
+:deep .el-switch__label {
   color: #000;
 }
 </style>
