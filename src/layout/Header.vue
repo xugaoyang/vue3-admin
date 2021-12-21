@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import Config from './Config.vue'
@@ -49,8 +49,5 @@ export default defineComponent({
 <style lang="scss" scoped>
 .header-l {
   width: 200px;
-}
-.header-r {
-  // width: 150px;
 }
 </style>

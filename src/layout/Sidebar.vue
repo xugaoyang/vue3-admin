@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, computed, toRefs, reactive } from 'vue'
 import { useStore } from 'vuex'
 import SidebarItem from './components/SidebarItem.vue'
@@ -96,7 +96,7 @@ export default defineComponent({
     const getSidebarPosition = computed(() => store.state.sidebarPosition)
     const getHeaderBgColor = computed(() => store.state.headerBgColor)
     if (getSidebarPosition.value === 'top') {
-      menuMode = 'horizontal'
+      menuMode.value = 'horizontal'
       store.dispatch('changeSidebarBgColor', getHeaderBgColor.value)
     }
     const params = toRefs(data)

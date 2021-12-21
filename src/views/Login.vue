@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, reactive, ref, unref, onMounted } from 'vue'
 import { User, Lock } from '@element-plus/icons'
 import { init, animate } from '@/utils/loginBgWithThree'
@@ -61,7 +61,7 @@ export default defineComponent({
       animate()
     })
     const login = () => {
-      unref(loginForm).validate((valid) => {
+      unref(loginForm).validate((valid: boolean) => {
         if (valid) {
           console.log('submit')
         }
@@ -91,8 +91,6 @@ export default defineComponent({
     height: 200px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.7);
-    .login-form {
-    }
   }
 }
 </style>

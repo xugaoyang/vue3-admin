@@ -6,7 +6,7 @@
   </el-config-provider>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import en from 'element-plus/lib/locale/lang/en'

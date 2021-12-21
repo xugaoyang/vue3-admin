@@ -71,7 +71,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, reactive, toRefs } from 'vue'
 
 export default defineComponent({
@@ -95,7 +95,7 @@ export default defineComponent({
       },
     })
     const tableData = ref(Array(20).fill(item))
-    const openDialog = (type) => {
+    const openDialog = (type: string) => {
       dialogVisible.value = true
       switch (type) {
         case 'read':

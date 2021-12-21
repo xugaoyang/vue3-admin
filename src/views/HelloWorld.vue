@@ -41,12 +41,12 @@
   </el-card>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup() {
-    const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
+    const format = (percentage: number) => (percentage === 100 ? 'Full' : `${percentage}%`)
     return {
       format,
     }

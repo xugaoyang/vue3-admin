@@ -117,7 +117,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, reactive, toRefs } from 'vue'
 
 const generateData = () => {
@@ -214,7 +214,7 @@ export default defineComponent({
       ],
       transferData: generateData(),
       leftValue: [1],
-      renderFunc(h, option) {
+      renderFunc(h: any, option: any) {
         return h('span', null, option.key, ' - ', option.label)
       },
       date1: new Date(),
@@ -293,13 +293,13 @@ export default defineComponent({
       loading: true,
     })
     const checkList = ref(['selected and disabled', 'Option A'])
-    const handleChange = (value) => {
+    const handleChange = (value: any) => {
       console.log(value)
     }
-    const transferHandleChange = (value, direction, movedKeys) => {
+    const transferHandleChange = (value: any, direction: any, movedKeys: any) => {
       console.log(value, direction, movedKeys)
     }
-    const tabClick = (tab, event) => {
+    const tabClick = (tab: any, event: any) => {
       console.log(tab, event)
     }
     return {

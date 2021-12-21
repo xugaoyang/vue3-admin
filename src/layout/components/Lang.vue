@@ -10,26 +10,27 @@
   />
 </template>
 
-<script>
-import { defineComponent, ref, computed, getCurrentInstance, onMounted } from 'vue'
+<script lang="ts">
+import { defineComponent, ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
+import useCurrentInstance from '@/hooks/useCurrentInstance'
 
 export default defineComponent({
   components: {},
   setup() {
     let store = useStore()
-    let { proxy } = getCurrentInstance()
+    let { proxy } = useCurrentInstance()
     const switchValue = ref(true)
     const lang = computed(() => store.state.lang)
     switchValue.value = lang.value === 'zh-cn' ? true : false
-    const changeLang = (val) => {
+    const changeLang = (val: boolean) => {
       const currentLang = val ? 'zh-cn' : 'en'
-      proxy.$i18n.locale = currentLang
+      proxy!.$i18n.locale = currentLang
       store.dispatch('changeLang', currentLang)
     }
     onMounted(() => {
       // 初始化
-      proxy.$i18n.locale = lang.value
+      proxy!.$i18n.locale = lang.value
     })
     return {
       switchValue,

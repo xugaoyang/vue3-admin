@@ -28,7 +28,8 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import type { Tag } from '#/tag'
 import { defineComponent, computed, reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -61,17 +62,17 @@ export default defineComponent({
     const router = useRouter()
     const getTags = computed(() => store.state.tags)
     const getCurrentTag = computed(() => store.state.currentTag)
-    const clickTag = (tag) => {
+    const clickTag = (tag: Tag) => {
       router.push(tag.path)
     }
-    const closeTag = (tagTitle) => {
+    const closeTag = (tagTitle: string) => {
       const tags = getTags.value
       if (tags && tags.length > 1) {
-        const filterTags = getTags.value.filter((tag) => tag.title !== tagTitle)
+        const filterTags = getTags.value.filter((tag: Tag) => tag.title !== tagTitle)
         store.dispatch('changeTags', filterTags)
         if (getCurrentTag.value.title === tagTitle) {
           // 关闭当前页，默认显示左边标签页
-          const currentTagIndex = tags.findIndex((tag) => tag.title === tagTitle)
+          const currentTagIndex = tags.findIndex((tag: Tag) => tag.title === tagTitle)
           console.log(currentTagIndex)
           // currentTagIndex >= 1:选择左边tag; currentTagIndex = 0 : 选择首页tag
           if (currentTagIndex >= 1) {
@@ -86,9 +87,9 @@ export default defineComponent({
         router.push('/elementComponents')
       }
     }
-    const closeTagCommand = (command) => {
+    const closeTagCommand = (command: string) => {
       const tags = getTags.value
-      const currentTagIndex = tags.findIndex((tag) => tag.title === getCurrentTag.value.title)
+      const currentTagIndex = tags.findIndex((tag: Tag) => tag.title === getCurrentTag.value.title)
       let filterTags = []
       switch (command) {
         case 'left':
@@ -141,8 +142,6 @@ export default defineComponent({
     border-radius: 4px;
     border-color: $borderColor;
     color: $borderColor;
-  }
-  .icon-close {
   }
 }
 </style>

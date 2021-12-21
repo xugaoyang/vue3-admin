@@ -29,7 +29,7 @@
   </el-container>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
@@ -60,19 +60,20 @@ export default defineComponent({
     const sidebarBgColor = computed(() => store.state.sidebarBgColor)
 
     // 初始化
-    let rootStyle = document.querySelector(':root').getAttribute('style')
-    rootStyle = rootStyle === null ? '' : rootStyle
-    rootStyle = uniqStringByReg(rootStyle, '--systemColor')
-    rootStyle += `--systemColor:${systemColor.value};`
-    rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
-    rootStyle += `--headerBgColor:${headerBgColor.value};`
-    rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
-    rootStyle += `--sidebarBgColor:${sidebarBgColor.value};`
-    document.querySelector(':root').setAttribute('style', rootStyle)
-
+    let rootStyle = document.querySelector(':root')?.getAttribute('style')
+    if (rootStyle) {
+      rootStyle = rootStyle === null ? '' : rootStyle
+      rootStyle = uniqStringByReg(rootStyle, '--systemColor')
+      rootStyle += `--systemColor:${systemColor.value};`
+      rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
+      rootStyle += `--headerBgColor:${headerBgColor.value};`
+      rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
+      rootStyle += `--sidebarBgColor:${sidebarBgColor.value};`
+      document.querySelector(':root')?.setAttribute('style', rootStyle)
+    }
     if (theme.value === 'dark') {
       initDarkTheme()
-      document.querySelector('html').setAttribute('class', theme.value)
+      document.querySelector('html')?.setAttribute('class', theme.value)
     }
 
     return {

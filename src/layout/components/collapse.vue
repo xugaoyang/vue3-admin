@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import { Expand, Fold } from '@element-plus/icons'
@@ -28,7 +28,7 @@ export default defineComponent({
     const isMenuCollapse = computed(() => {
       return store.state.isMenuCollapse
     })
-    const changeCollapseStatus = (val) => {
+    const changeCollapseStatus = (val: boolean) => {
       store.dispatch('changeMenuCollapse', val)
     }
     return {

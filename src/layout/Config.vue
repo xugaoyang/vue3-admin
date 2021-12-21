@@ -98,12 +98,17 @@
   </el-drawer>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, computed, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { Sunny, Moon } from '@element-plus/icons'
 import { hexToRgb, colorGrayLevel } from '../utils/colorTransform'
 import { uniqStringByReg, initDarkTheme, initLightTheme } from '../utils/common'
+
+interface Action {
+  action: string
+  type: string
+}
 
 export default defineComponent({
   props: {
@@ -183,7 +188,7 @@ export default defineComponent({
     const sidebarPosition = computed(() => {
       return store.state.sidebarPosition
     })
-    const activeChangeColor = (type, value) => {
+    const activeChangeColor = (type: string, value: any) => {
       const actions = [
         {
           action: 'changeSidebarBgColor',
@@ -199,56 +204,58 @@ export default defineComponent({
         },
       ]
 
-      const currentAction = actions.find((action) => action.type === type)
+      const currentAction: Action = actions.find((action) => action.type === type)!
       store.dispatch(currentAction.action, value)
 
       // 获取根元素的属性
-      let rootStyle = document.querySelector(':root').getAttribute('style')
+      let rootStyle = document.querySelector(':root')?.getAttribute('style')
       rootStyle = rootStyle === null ? '' : rootStyle
 
       // 获取当前配置色的灰度，判断深色还是浅色
       const isDeepColor = colorGrayLevel(hexToRgb(String(value)), 100) === 'deep'
 
       // 优先判断style是否有重复属性
-      switch (type) {
-        case 'system':
-          rootStyle = uniqStringByReg(rootStyle, '--systemColor')
-          rootStyle += `--systemColor:${value};`
-          break
-        case 'sidebar':
-          rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
-          rootStyle += `--sidebarBgColor:${value};`
-          rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
-          if (isDeepColor) {
-            rootStyle += `--sidebarTextColor:#fff;`
-          } else {
-            rootStyle += `--sidebarTextColor:#000;`
-          }
-          break
-        case 'header':
-          rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
-          rootStyle += `--headerBgColor:${value};`
-          rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
-          if (isDeepColor) {
-            rootStyle += `--headerTextColor:#fff;`
-          } else {
-            rootStyle += `--headerTextColor:#000;`
-          }
-          break
-        default:
-          console.log('no change')
+      if (rootStyle) {
+        switch (type) {
+          case 'system':
+            rootStyle = uniqStringByReg(rootStyle, '--systemColor')
+            rootStyle += `--systemColor:${value};`
+            break
+          case 'sidebar':
+            rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
+            rootStyle += `--sidebarBgColor:${value};`
+            rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
+            if (isDeepColor) {
+              rootStyle += `--sidebarTextColor:#fff;`
+            } else {
+              rootStyle += `--sidebarTextColor:#000;`
+            }
+            break
+          case 'header':
+            rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
+            rootStyle += `--headerBgColor:${value};`
+            rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
+            if (isDeepColor) {
+              rootStyle += `--headerTextColor:#fff;`
+            } else {
+              rootStyle += `--headerTextColor:#000;`
+            }
+            break
+          default:
+            console.log('no change')
+        }
+        document.querySelector(':root')?.setAttribute('style', rootStyle)
       }
-      document.querySelector(':root').setAttribute('style', rootStyle)
     }
-    const changeSidebarPosition = (position) => {
+    const changeSidebarPosition = (position: string) => {
       store.dispatch('changeSidebarPosition', position)
       if (currentTheme.value === 'dark') {
         theme.value = false
         initDarkTheme()
       }
     }
-    const themeChange = (val) => {
-      let themeClass = document.querySelector('html').getAttribute('class') || ''
+    const themeChange = (val: boolean) => {
+      let themeClass = document.querySelector('html')?.getAttribute('class') || ''
       // const hasDarkClass = themeClass.includes('dark-theme')
       if (val) {
         // 移除 class:dark-theme
@@ -264,7 +271,7 @@ export default defineComponent({
         // 切换暗模式，强制重置头部和侧边背景色以及文字颜色
         initDarkTheme()
       }
-      document.querySelector('html').setAttribute('class', themeClass)
+      document.querySelector('html')?.setAttribute('class', themeClass)
     }
     return {
       theme,
