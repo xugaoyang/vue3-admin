@@ -40,7 +40,7 @@ setup() {
 
 - [x] 在线配置
 - [x] tags
-- [ ] with ts
+- [x] with ts
 - [ ] axios封装
 - [ ] mock
 - [x] i18n

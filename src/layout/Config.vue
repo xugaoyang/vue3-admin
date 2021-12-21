@@ -255,7 +255,7 @@ export default defineComponent({
       }
     }
     const themeChange = (val: boolean) => {
-      let themeClass = document.querySelector('html')?.getAttribute('class') || ''
+      let themeClass = document.querySelector('html')!.getAttribute('class') || ''
       // const hasDarkClass = themeClass.includes('dark-theme')
       if (val) {
         // 移除 class:dark-theme
@@ -271,7 +271,7 @@ export default defineComponent({
         // 切换暗模式，强制重置头部和侧边背景色以及文字颜色
         initDarkTheme()
       }
-      document.querySelector('html')?.setAttribute('class', themeClass)
+      document.querySelector('html')!.setAttribute('class', themeClass)
     }
     return {
       theme,

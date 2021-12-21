@@ -30,13 +30,14 @@
 </template>
 
 <script lang="ts">
+// @ts-nocheck
 import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import Sidebar from './Sidebar.vue'
 import Header from './Header.vue'
 import Tags from './Tags.vue'
-import { uniqStringByReg, initDarkTheme } from '../utils/common'
+import { initDarkTheme } from '../utils/common'
 
 export default defineComponent({
   components: { Sidebar, Header, Tags },
@@ -60,17 +61,9 @@ export default defineComponent({
     const sidebarBgColor = computed(() => store.state.sidebarBgColor)
 
     // 初始化
-    let rootStyle = document.querySelector(':root')?.getAttribute('style')
-    if (rootStyle) {
-      rootStyle = rootStyle === null ? '' : rootStyle
-      rootStyle = uniqStringByReg(rootStyle, '--systemColor')
-      rootStyle += `--systemColor:${systemColor.value};`
-      rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
-      rootStyle += `--headerBgColor:${headerBgColor.value};`
-      rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
-      rootStyle += `--sidebarBgColor:${sidebarBgColor.value};`
-      document.querySelector(':root')?.setAttribute('style', rootStyle)
-    }
+    let rootStyle = `--systemColor:${systemColor.value};--headerBgColor:${headerBgColor.value};--sidebarBgColor:${sidebarBgColor.value};`
+    document.querySelector(':root').setAttribute('style', rootStyle)
+
     if (theme.value === 'dark') {
       initDarkTheme()
       document.querySelector('html')?.setAttribute('class', theme.value)

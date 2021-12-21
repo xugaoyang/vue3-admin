@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 import { ElMessage } from 'element-plus'
 
-const errorHandler = (status) => {
+const errorHandler = (status: number) => {
   switch (status) {
     case 400:
       ElMessage.error('请求错误:Bad Request')

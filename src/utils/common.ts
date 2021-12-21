@@ -24,32 +24,29 @@ export const uniqString = (str: string, checkStr: string, splitSymbol: string) =
 export const uniqStringByReg = (str: string, checkStr: string) => {
   // 指定匹配色的字符长度
   const reg = new RegExp(checkStr + ':(.{4,7};)', 'g')
+  console.log(str, checkStr, reg)
   const res = str.replace(reg, '')
   return res
 }
 
 export const initDarkTheme = () => {
-  let rootStyle = document.querySelector(':root')?.getAttribute('style')
-  if (rootStyle) {
-    rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
-    rootStyle += `--headerBgColor:#000;`
-    rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
-    rootStyle += `--sidebarBgColor:#000;`
-    rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
-    rootStyle += `--sidebarTextColor:#fff;`
-    rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
-    rootStyle += `--headerTextColor:#fff;`
-    document.querySelector(':root')?.setAttribute('style', rootStyle)
-  }
+  let rootStyle = document.querySelector(':root')!.getAttribute('style')!
+  rootStyle = uniqStringByReg(rootStyle, '--headerBgColor')
+  rootStyle += `--headerBgColor:#000;`
+  rootStyle = uniqStringByReg(rootStyle, '--sidebarBgColor')
+  rootStyle += `--sidebarBgColor:#000;`
+  rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
+  rootStyle += `--sidebarTextColor:#fff;`
+  rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
+  rootStyle += `--headerTextColor:#fff;`
+  document.querySelector(':root')!.setAttribute('style', rootStyle)
 }
 
 export const initLightTheme = () => {
-  let rootStyle = document.querySelector(':root')?.getAttribute('style')
-  if (rootStyle) {
-    rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
-    rootStyle += `--sidebarTextColor:#fff;`
-    rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
-    rootStyle += `--headerTextColor:#fff;`
-    document.querySelector(':root')?.setAttribute('style', rootStyle)
-  }
+  let rootStyle = document.querySelector(':root')!.getAttribute('style')!
+  rootStyle = uniqStringByReg(rootStyle, '--sidebarTextColor')
+  rootStyle += `--sidebarTextColor:#fff;`
+  rootStyle = uniqStringByReg(rootStyle, '--headerTextColor')
+  rootStyle += `--headerTextColor:#fff;`
+  document.querySelector(':root')!.setAttribute('style', rootStyle)
 }
