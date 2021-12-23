@@ -25,18 +25,25 @@ export default defineComponent({
     const data = reactive({
       menuList: [
         {
-          name: 'AllComponents',
+          name: 'Workbench',
           id: '1',
           icon: 'el-icon-house',
-          path: '/elementComponents',
+          path: '/Workbench',
           children: [],
         },
         {
-          name: 'Components',
+          name: 'ElementPlus',
           id: '2',
           icon: 'el-icon-apple',
           path: '/tool',
           children: [
+            {
+              name: 'AllComponents',
+              id: '1',
+              icon: 'el-icon-house',
+              path: '/elementComponents',
+              children: [],
+            },
             {
               name: 'info',
               id: '2-1',
@@ -61,33 +68,70 @@ export default defineComponent({
           ],
         },
         {
-          name: '导航三',
+          name: 'charts',
           id: '3',
           icon: 'el-icon-food',
           path: '/food',
           children: [
             {
-              name: '导航三-1',
+              name: 'echart',
               id: '3-1',
               icon: 'el-icon-cherry',
-              path: '/food/fries',
+              path: '/echarts',
               children: [],
             },
             {
-              name: '导航三-2',
+              name: 'baiduMap',
               id: '3-2',
               icon: 'el-icon-coffee',
-              path: '/food/coffee',
+              path: '/baiduMap',
+              children: [],
+            },
+            {
+              name: 'baiduMapGl',
+              id: '3-2',
+              icon: 'el-icon-coffee',
+              path: '/baiduMapGl',
               children: [],
             },
           ],
         },
         {
-          name: '导航四',
+          name: 'Components',
           id: '4',
           icon: 'el-icon-coin',
           path: '/tool',
-          children: [],
+          children: [
+            {
+              name: 'Markdown',
+              id: '4-1',
+              icon: 'el-icon-cherry',
+              path: '/markdown',
+              children: [],
+            },
+            {
+              name: 'Editor',
+              id: '4-2',
+              icon: 'el-icon-cherry',
+              path: '/editor',
+              children: [],
+            },
+          ],
+        },
+        {
+          name: 'Functions',
+          id: '5',
+          icon: 'el-icon-coin',
+          path: '/tool',
+          children: [
+            {
+              name: 'WaterMark',
+              id: '4-1',
+              icon: 'el-icon-cherry',
+              path: '/watermark',
+              children: [],
+            },
+          ],
         },
       ],
     })

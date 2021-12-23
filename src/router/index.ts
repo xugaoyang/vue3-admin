@@ -10,34 +10,9 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    redirect: '/elementComponents',
+    redirect: '/workbench',
     component: Layout,
     children: [
-      {
-        path: 'table',
-        name: 'table',
-        component: () => import(/* webpackChunkName: 'table' */ '../views/Table.vue'),
-        meta: {
-          title: 'table',
-        },
-      },
-      {
-        path: 'info',
-        name: 'info',
-        component: () => import(/* webpackChunkName: 'helloworld' */ '../views/HelloWorld.vue'),
-        meta: {
-          title: 'info',
-        },
-      },
-      {
-        path: 'elementComponents',
-        name: 'elementComponents',
-        component: () =>
-          import(/* webpackChunkName: 'elementComponents' */ '../views/ElementComps.vue'),
-        meta: {
-          title: 'elementComponents',
-        },
-      },
       {
         path: 'login',
         name: 'login',
@@ -47,19 +22,101 @@ const routes = [
         },
       },
       {
+        path: 'workbench',
+        name: 'workbench',
+        component: () => import(/* webpackChunkName: 'workbench' */ '../views/Workbench.vue'),
+        meta: {
+          title: 'workbench',
+        },
+      },
+      {
+        path: 'table',
+        name: 'table',
+        component: () => import(/* webpackChunkName: 'table' */ '../views/elemeplus/Table.vue'),
+        meta: {
+          title: 'table',
+        },
+      },
+      {
+        path: 'info',
+        name: 'info',
+        component: () => import(/* webpackChunkName: 'helloworld' */ '../views/elemeplus/Info.vue'),
+        meta: {
+          title: 'info',
+        },
+      },
+      {
+        path: 'elementComponents',
+        name: 'elementComponents',
+        component: () =>
+          import(/* webpackChunkName: 'elementComponents' */ '../views/elemeplus/ElementComps.vue'),
+        meta: {
+          title: 'elementComponents',
+        },
+      },
+      {
         path: 'tree',
         name: 'tree',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/Tree.vue'),
+        component: () => import(/* webpackChunkName: 'login' */ '../views/elemeplus/Tree.vue'),
         meta: {
           title: 'tree',
+        },
+      },
+
+      {
+        path: 'echarts',
+        name: 'echarts',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/charts/Echarts.vue'),
+        meta: {
+          title: 'echarts',
+        },
+      },
+      {
+        path: 'baiduMap',
+        name: 'baiduMap',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/charts/BaiduMap.vue'),
+        meta: {
+          title: 'baiduMap',
+        },
+      },
+      {
+        path: 'baiduMapGl',
+        name: 'baiduMapGl',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/charts/BaiduMapGl.vue'),
+        meta: {
+          title: 'baiduMapGl',
         },
       },
       {
         path: 'i18n',
         name: 'i18n',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/I18n.vue'),
+        component: () => import(/* webpackChunkName: 'login' */ '../views/functions/I18n.vue'),
         meta: {
           title: 'i18n',
+        },
+      },
+      {
+        path: 'watermark',
+        name: 'watermark',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/functions/Watermark.vue'),
+        meta: {
+          title: 'watermark',
+        },
+      },
+      {
+        path: 'editor',
+        name: 'editor',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/components/Editor.vue'),
+        meta: {
+          title: 'editor',
+        },
+      },
+      {
+        path: 'markdown',
+        name: 'markdown',
+        component: () => import(/* webpackChunkName: 'login' */ '../views/components/Markdown.vue'),
+        meta: {
+          title: 'markdown',
         },
       },
     ],
