@@ -28,41 +28,34 @@ export default defineComponent({
           name: 'Workbench',
           id: '1',
           icon: 'el-icon-house',
-          path: '/Workbench',
+          path: '/workbench',
           children: [],
         },
         {
           name: 'ElementPlus',
           id: '2',
           icon: 'el-icon-apple',
-          path: '/tool',
+          path: '/elementPlus',
           children: [
             {
               name: 'AllComponents',
-              id: '1',
+              id: '2-1',
               icon: 'el-icon-house',
               path: '/elementComponents',
               children: [],
             },
             {
               name: 'info',
-              id: '2-1',
+              id: '2-2',
               icon: 'el-icon-baseball',
               path: '/info',
               children: [],
             },
             {
               name: 'table',
-              id: '2-2',
+              id: '2-3',
               icon: 'el-icon-basketball',
               path: '/table',
-              children: [],
-            },
-            {
-              name: 'i18n',
-              id: '2-3',
-              icon: 'el-icon-cherry',
-              path: '/i18n',
               children: [],
             },
           ],
@@ -71,7 +64,7 @@ export default defineComponent({
           name: 'charts',
           id: '3',
           icon: 'el-icon-food',
-          path: '/food',
+          path: '/charts',
           children: [
             {
               name: 'echart',
@@ -89,7 +82,7 @@ export default defineComponent({
             },
             {
               name: 'baiduMapGl',
-              id: '3-2',
+              id: '3-3',
               icon: 'el-icon-coffee',
               path: '/baiduMapGl',
               children: [],
@@ -100,7 +93,7 @@ export default defineComponent({
           name: 'Components',
           id: '4',
           icon: 'el-icon-coin',
-          path: '/tool',
+          path: '/components',
           children: [
             {
               name: 'Markdown',
@@ -119,16 +112,23 @@ export default defineComponent({
           ],
         },
         {
-          name: 'Functions',
+          name: 'Features',
           id: '5',
           icon: 'el-icon-coin',
-          path: '/tool',
+          path: '/features',
           children: [
             {
               name: 'WaterMark',
               id: '4-1',
               icon: 'el-icon-cherry',
               path: '/watermark',
+              children: [],
+            },
+            {
+              name: 'i18n',
+              id: '2-4',
+              icon: 'el-icon-cherry',
+              path: '/i18n',
               children: [],
             },
           ],

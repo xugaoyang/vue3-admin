@@ -90,7 +90,7 @@ const routes = [
       {
         path: 'i18n',
         name: 'i18n',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/functions/I18n.vue'),
+        component: () => import(/* webpackChunkName: 'login' */ '../views/features/I18n.vue'),
         meta: {
           title: 'i18n',
         },
@@ -98,7 +98,7 @@ const routes = [
       {
         path: 'watermark',
         name: 'watermark',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/functions/Watermark.vue'),
+        component: () => import(/* webpackChunkName: 'login' */ '../views/features/Watermark.vue'),
         meta: {
           title: 'watermark',
         },
