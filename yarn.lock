@@ -889,7 +889,15 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
+"@babel/runtime-corejs3@^7.11.2":
+  version "7.16.5"
+  resolved "https://registry.npmmirror.com/@babel/runtime-corejs3/download/@babel/runtime-corejs3-7.16.5.tgz#9057d879720c136193f0440bc400088212a74894"
+  integrity sha512-F1pMwvTiUNSAM8mc45kccMQxj31x3y3P+tA/X8hKNWp3/hUsxdGxZ3D3H8JIkxtfA8qGkaBTKvcmvStaYseAFw==
+  dependencies:
+    core-js-pure "^3.19.0"
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.11.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.8.4":
   version "7.16.5"
   resolved "https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.5.tgz#7f3e34bf8bdbbadf03fbb7b1ea0d929569c9487a"
   integrity sha512-TXWihFIS3Pyv5hzR7j6ihmeLkZfrXGxAr5UfSl8CHf+6q/wpiYDkUau0czckpYG8QmnCIuPpdLtuA9VmuGGyMA==
@@ -3424,6 +3432,11 @@ core-js-compat@^3.18.0, core-js-compat@^3.19.1, core-js-compat@^3.6.5:
   dependencies:
     browserslist "^4.18.1"
     semver "7.0.0"
+
+core-js-pure@^3.19.0:
+  version "3.20.1"
+  resolved "https://registry.npmmirror.com/core-js-pure/download/core-js-pure-3.20.1.tgz#f7a2c62f98de83e4da8fca7b78846d3a2f542145"
+  integrity sha512-yeNNr3L9cEBwNy6vhhIJ0nko7fE7uFO6PgawcacGt2VWep4WqQx0RiqlkgSP7kqUMC1IKdfO9qPeWXcUheHLVQ==
 
 core-js@^3.6.5:
   version "3.19.3"
@@ -9442,7 +9455,7 @@ tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2:
+tslib@^2, tslib@^2.1.0:
   version "2.3.1"
   resolved "https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=
@@ -9904,6 +9917,15 @@ vuex@^4.0.2:
   integrity sha1-+Jbb1b8qDpY/AMZ+m2EN50nMrMk=
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.11"
+
+wangeditor@^4.7.11:
+  version "4.7.11"
+  resolved "https://registry.npmmirror.com/wangeditor/download/wangeditor-4.7.11.tgz#1a3c5f3b5e406eaabd1bdbcf456d9455ae3830e7"
+  integrity sha512-z6xEHTSj4YgqvQkHWh9/V/Md7hjEKchXquwvtxvWhwlMS/wBFprCg7qgE4omzuSBeivkZZGTJP08pmdHzOwCUQ==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "@babel/runtime-corejs3" "^7.11.2"
+    tslib "^2.1.0"
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"

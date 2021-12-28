@@ -67,3 +67,4 @@ Failed to fetch gitmoji JSON, please refer to https://github.com/arvinxx/gitmoji
 4. [MDN--var](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var())
 5. [css变量教程](https://www.ruanyifeng.com/blog/2017/05/css-variables.html)
 6. [threejs example](https://threejs.org/examples/webgl_points_dynamic.html)
+7. [vueuse](https://vueuse.org/)
