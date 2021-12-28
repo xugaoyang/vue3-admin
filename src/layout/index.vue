@@ -79,6 +79,13 @@ export default defineComponent({
 })
 </script>
 
+<style>
+#app,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+</style>
 <style lang="scss" scoped>
 .layout {
   :deep .el-menu {

@@ -16,7 +16,6 @@ export function useWatermark(
   })
   const id = domSymbol.toString()
   const watermarkEl = shallowRef<HTMLElement>()
-
   const clear = () => {
     const domId = unref(watermarkEl)
     watermarkEl.value = undefined
@@ -54,10 +53,10 @@ export function useWatermark(
     const el = unref(watermarkEl)
     if (!el) return
     if (isDef(options.width)) {
-      el.style.width = `${options.width}px`
+      el.style.width = `${options.width - 1}px`
     }
     if (isDef(options.height)) {
-      el.style.height = `${options.height}px`
+      el.style.height = `${options.height - 1}px`
     }
     if (isDef(options.str)) {
       el.style.background = `url(${createBase64(options.str)}) left top repeat`
@@ -73,10 +72,10 @@ export function useWatermark(
     watermarkEl.value = div
     div.id = id
     div.style.pointerEvents = 'none'
-    div.style.top = '0px'
-    div.style.left = '0px'
     div.style.position = 'absolute'
     div.style.zIndex = '100000'
+    div.style.top = '0px'
+    div.style.left = '0px'
     const el = unref(appendEl)
     if (!el) return id
     const { clientHeight: height, clientWidth: width } = el
