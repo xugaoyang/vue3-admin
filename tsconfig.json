@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/views/components/text.js"  ],
   "exclude": [
     "node_modules",
   ]
