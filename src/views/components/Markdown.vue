@@ -1,13 +1,16 @@
 <template>
-  <div>markdown</div>
+  <v-md-editor v-model="text" height="400px"></v-md-editor>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
-    return {}
+    const text = ref('')
+    return {
+      text,
+    }
   },
 })
 </script>
