@@ -54,7 +54,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     const token = store.getters.token
-    token && (config.headers.Authorization = token)
+    token && (config.headers!.Authorization = token)
     return config
   },
   (error) => {

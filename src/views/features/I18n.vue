@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-date-picker v-model="value1" type="date" placeholder="Pick a day"> </el-date-picker>
+    <el-date-picker v-model="value" type="date" placeholder="Pick a day"> </el-date-picker>
     {{ $t('home') }}
   </div>
 </template>
