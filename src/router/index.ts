@@ -57,7 +57,7 @@ const routes = [
       {
         path: 'tree',
         name: 'tree',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/elemeplus/Tree.vue'),
+        component: () => import(/* webpackChunkName: 'tree' */ '../views/elemeplus/Tree.vue'),
         meta: {
           title: 'tree',
         },
@@ -66,7 +66,7 @@ const routes = [
       {
         path: 'echarts',
         name: 'echarts',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/charts/Echarts.vue'),
+        component: () => import(/* webpackChunkName: 'echarts' */ '../views/charts/Echarts.vue'),
         meta: {
           title: 'echarts',
         },
@@ -74,7 +74,7 @@ const routes = [
       {
         path: 'baiduMap',
         name: 'baiduMap',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/charts/BaiduMap.vue'),
+        component: () => import(/* webpackChunkName: 'baiduMap' */ '../views/charts/BaiduMap.vue'),
         meta: {
           title: 'baiduMap',
         },
@@ -82,7 +82,8 @@ const routes = [
       {
         path: 'baiduMapGl',
         name: 'baiduMapGl',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/charts/BaiduMapGl.vue'),
+        component: () =>
+          import(/* webpackChunkName: 'baiduMapGl' */ '../views/charts/BaiduMapGl.vue'),
         meta: {
           title: 'baiduMapGl',
         },
@@ -90,7 +91,7 @@ const routes = [
       {
         path: 'i18n',
         name: 'i18n',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/features/I18n.vue'),
+        component: () => import(/* webpackChunkName: 'i18n' */ '../views/features/I18n.vue'),
         meta: {
           title: 'i18n',
         },
@@ -98,7 +99,8 @@ const routes = [
       {
         path: 'watermark',
         name: 'watermark',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/features/Watermark.vue'),
+        component: () =>
+          import(/* webpackChunkName: 'watermark' */ '../views/features/Watermark.vue'),
         meta: {
           title: 'watermark',
         },
@@ -106,7 +108,7 @@ const routes = [
       {
         path: 'editor',
         name: 'editor',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/components/Editor.vue'),
+        component: () => import(/* webpackChunkName: 'editor' */ '../views/components/Editor.vue'),
         meta: {
           title: 'editor',
         },
@@ -114,7 +116,8 @@ const routes = [
       {
         path: 'markdown',
         name: 'markdown',
-        component: () => import(/* webpackChunkName: 'login' */ '../views/components/Markdown.vue'),
+        component: () =>
+          import(/* webpackChunkName: 'markdown' */ '../views/components/Markdown.vue'),
         meta: {
           title: 'markdown',
         },
