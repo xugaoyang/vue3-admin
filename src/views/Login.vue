@@ -79,7 +79,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .login-page {
-  :deep canvas {
+  :deep(canvas) {
     width: 100% !important;
     height: 100% !important;
   }

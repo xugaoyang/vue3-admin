@@ -315,7 +315,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .layout {
-  :deep .el-menu {
+  :deep(.el-menu) {
     border: none;
   }
 }
