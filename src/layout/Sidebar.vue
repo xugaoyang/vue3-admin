@@ -119,16 +119,23 @@ export default defineComponent({
           children: [
             {
               name: 'WaterMark',
-              id: '4-1',
+              id: '5-1',
               icon: 'el-icon-cherry',
               path: '/watermark',
               children: [],
             },
             {
               name: 'i18n',
-              id: '2-4',
+              id: '5-2',
               icon: 'el-icon-cherry',
               path: '/i18n',
+              children: [],
+            },
+            {
+              name: 'crypto',
+              id: '5-3',
+              icon: 'el-icon-cherry',
+              path: '/crypto',
               children: [],
             },
           ],

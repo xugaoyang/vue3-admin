@@ -122,6 +122,14 @@ const routes = [
           title: 'markdown',
         },
       },
+      {
+        path: 'crypto',
+        name: 'crypto',
+        component: () => import(/* webpackChunkName: 'crypto' */ '../views/features/Crypto.vue'),
+        meta: {
+          title: 'crypto',
+        },
+      },
     ],
   },
 ]
