@@ -130,6 +130,15 @@ const routes = [
           title: 'crypto',
         },
       },
+      {
+        path: 'recorder',
+        name: 'recorder',
+        component: () =>
+          import(/* webpackChunkName: 'recorder' */ '../views/features/Recorder.vue'),
+        meta: {
+          title: 'recorder',
+        },
+      },
     ],
   },
 ]

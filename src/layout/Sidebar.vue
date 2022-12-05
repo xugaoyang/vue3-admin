@@ -138,6 +138,13 @@ export default defineComponent({
               path: '/crypto',
               children: [],
             },
+            {
+              name: 'recorder',
+              id: '5-3',
+              icon: 'el-icon-cherry',
+              path: '/recorder',
+              children: [],
+            },
           ],
         },
       ],
